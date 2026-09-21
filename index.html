@@ -1,13 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plataforma Académica</title>
+
     <style>
-        /* ==========================================================================
+        /* =========================================================
            1. RESET Y ESTILOS GLOBALES
-           ========================================================================== */
+        ========================================================= */
+
         * {
             box-sizing: border-box;
             margin: 0;
@@ -18,9 +21,10 @@
             display: none !important;
         }
 
-        /* ==========================================================================
-           2. LOGIN (Fondo blanco) — se activa con body.login-body
-           ========================================================================== */
+        /* =========================================================
+           2. LOGIN
+        ========================================================= */
+
         body.login-body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #ffffff;
@@ -78,7 +82,7 @@
             background-color: #0052cc;
         }
 
-        .login-body .error-text {
+        .error-text {
             color: #d93025;
             font-size: 14px;
             margin-top: 15px;
@@ -106,9 +110,10 @@
             color: #ffffff;
         }
 
-        /* ==========================================================================
-           3. DASHBOARD (Fondo oscuro) — se activa con body.dashboard-body
-           ========================================================================== */
+        /* =========================================================
+           3. DASHBOARD
+        ========================================================= */
+
         body.dashboard-body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background-color: #0b0f19;
@@ -123,7 +128,8 @@
             min-height: 100vh;
         }
 
-        /* Sidebar */
+        /* SIDEBAR */
+
         .sidebar {
             width: 250px;
             background-color: #080b12;
@@ -197,7 +203,8 @@
             background-color: #451a1a;
         }
 
-        /* Contenido principal */
+        /* CONTENIDO */
+
         .main-dashboard {
             flex-grow: 1;
             min-width: 0;
@@ -260,7 +267,8 @@
             background-color: #2a3449;
         }
 
-        /* Pestañas */
+        /* PESTAÑAS */
+
         .tabs-container {
             display: flex;
             flex-wrap: wrap;
@@ -289,7 +297,8 @@
             border-color: #0284c7;
         }
 
-        /* Banner */
+        /* BANNER */
+
         .welcome-banner {
             margin-bottom: 35px;
         }
@@ -305,9 +314,10 @@
             font-size: 15px;
         }
 
-        /* ==========================================================================
-           4. CURSO: UNIDADES Y SEMANAS
-           ========================================================================== */
+        /* =========================================================
+           4. UNIDADES Y SEMANAS
+        ========================================================= */
+
         .units-container {
             display: flex;
             flex-direction: column;
@@ -367,9 +377,10 @@
             color: #94a3b8;
         }
 
-        /* ==========================================================================
-           5. ENTREGA DE ACTIVIDAD
-           ========================================================================== */
+        /* =========================================================
+           5. ACTIVIDAD
+        ========================================================= */
+
         .container-actividad {
             max-width: 800px;
             margin: 10px auto;
@@ -460,9 +471,10 @@
             text-decoration: underline;
         }
 
-        /* ==========================================================================
-           6. MODAL DE INFORMACIÓN
-           ========================================================================== */
+        /* =========================================================
+           6. MODAL
+        ========================================================= */
+
         .modal-overlay {
             display: none;
             position: fixed;
@@ -512,10 +524,12 @@
             font-weight: bold;
         }
 
-        /* ==========================================================================
+        /* =========================================================
            7. RESPONSIVE
-           ========================================================================== */
+        ========================================================= */
+
         @media (max-width: 800px) {
+
             body.dashboard-body,
             #view-app {
                 flex-direction: column;
@@ -539,410 +553,1525 @@
         }
     </style>
 </head>
+
 <body class="login-body">
 
-    <!-- ======================================================================
-         VISTA: LOGIN
-         ====================================================================== -->
+    <!-- =========================================================
+         LOGIN
+    ========================================================== -->
+
     <div class="card" id="view-login">
+
         <h2>Iniciar Sesión</h2>
+
         <form id="loginForm">
+
             <div class="input-group">
-                <input type="text" id="username" placeholder="Usuario o Correo" required>
+                <input
+                    type="text"
+                    id="username"
+                    placeholder="Usuario o Correo"
+                    required>
             </div>
+
             <div class="input-group">
-                <input type="password" id="password" placeholder="Contraseña" required>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="Contraseña"
+                    required>
             </div>
-            <button type="submit">Ingresar</button>
+
+            <button type="submit">
+                Ingresar
+            </button>
+
             <p id="error-message" class="error-text" hidden></p>
+
         </form>
 
-        <!-- Entra directo a la vista de tarea (sin el botón "Inicio") -->
-        <a href="#curso?nombre=Desarrollo%20de%20Aplicaciones&modo=tarea" class="btn-ver-tarea">Ver Tarea</a>
+        <a
+            href="#curso?nombre=Desarrollo%20de%20Aplicaciones&modo=tarea"
+            class="btn-ver-tarea">
+
+            Ver Tarea
+
+        </a>
+
     </div>
 
-    <!-- ======================================================================
-         VISTAS DE LA APLICACIÓN (Inicio, Curso, Actividad)
-         ====================================================================== -->
+
+    <!-- =========================================================
+         APLICACIÓN
+    ========================================================== -->
+
     <div id="view-app" hidden>
 
-        <!-- Barra lateral (se genera desde JS) -->
+        <!-- SIDEBAR -->
+
         <aside class="sidebar">
+
             <div class="brand">
+
                 <div class="brand-logo-container">
-                    <div class="upla-logo">UPLA</div>
+
+                    <div class="upla-logo">
+                        UPLA
+                    </div>
+
                 </div>
+
                 <div class="brand-text">
+
                     <p>Universidad</p>
                     <p>Peruana</p>
                     <p>Los Andes</p>
+
                 </div>
+
             </div>
-            <nav class="sidebar-nav" id="sidebar-nav"></nav>
+
+            <nav
+                class="sidebar-nav"
+                id="sidebar-nav">
+            </nav>
+
         </aside>
 
-        <main class="main-dashboard" id="main-dashboard">
 
-            <!-- Cabecera de usuario -->
+        <!-- CONTENIDO PRINCIPAL -->
+
+        <main
+            class="main-dashboard"
+            id="main-dashboard">
+
+
+            <!-- CABECERA -->
+
             <header class="user-header">
+
                 <div class="user-info">
-                    <h1>Gonzales Soto Jhoel <span class="user-subtitle">· Ingeniería de sistemas y computación · Ciclo IV</span></h1>
+
+                    <h1>
+
+                        Gonzales Soto Jhoel
+
+                        <span class="user-subtitle">
+
+                            · Ingeniería de sistemas y computación · Ciclo IV
+
+                        </span>
+
+                    </h1>
+
                 </div>
+
+
                 <div class="header-actions">
-                    <button class="btn-secondary" id="btn-info" type="button">Información</button>
-                    <button class="btn-secondary" type="button">Editar perfil</button>
-                    <a href="#login" class="btn-secondary btn-logout-header" id="btn-logout-header">Cerrar sesión</a>
+
+                    <button
+                        class="btn-secondary"
+                        id="btn-info"
+                        type="button">
+
+                        Información
+
+                    </button>
+
+
+                    <button
+                        class="btn-secondary"
+                        type="button">
+
+                        Editar perfil
+
+                    </button>
+
+
+                    <a
+                        href="#login"
+                        class="btn-secondary btn-logout-header"
+                        id="btn-logout-header">
+
+                        Cerrar sesión
+
+                    </a>
+
                 </div>
+
             </header>
 
-            <!-- Pestañas (Inicio / cursos) -->
-            <div class="tabs-container" id="tabs-container"></div>
 
-            <!-- PÁGINA: INICIO -->
-            <section id="page-inicio" hidden>
+            <!-- PESTAÑAS -->
+
+            <div
+                class="tabs-container"
+                id="tabs-container">
+            </div>
+
+
+            <!-- =====================================================
+                 INICIO
+            ====================================================== -->
+
+            <section
+                id="page-inicio"
+                hidden>
+
                 <div class="welcome-banner">
-                    <h2>Jhoel</h2>
-                    <p>Aquí reúnes las actividades de tus dos cursos, organizadas por unidad.</p>
+
+                    <h2>
+                        Jhoel
+                    </h2>
+
+                    <p>
+                        Aquí reúnes las actividades de tus dos cursos,
+                        organizadas por unidad.
+                    </p>
+
                 </div>
+
             </section>
 
-            <!-- PÁGINA: CURSO -->
-            <section id="page-curso" hidden>
+
+            <!-- =====================================================
+                 CURSO
+            ====================================================== -->
+
+            <section
+                id="page-curso"
+                hidden>
+
                 <div class="welcome-banner">
-                    <h2 id="course-title"></h2>
-                    <p>Estructura de contenidos organizada en 4 unidades y 16 semanas lectivas.</p>
+
+                    <h2 id="course-title">
+                    </h2>
+
+                    <p>
+                        Estructura de contenidos organizada en
+                        4 unidades y 16 semanas lectivas.
+                    </p>
+
                 </div>
-                <div class="units-container" id="units-container"></div>
+
+                <div
+                    class="units-container"
+                    id="units-container">
+                </div>
+
             </section>
 
-            <!-- PÁGINA: ENTREGA DE ACTIVIDAD -->
-            <section id="page-actividad" hidden>
-                <a href="#" class="btn-back" id="btn-volver-curso">← Volver al curso</a>
+
+            <!-- =====================================================
+                 ACTIVIDAD
+            ====================================================== -->
+
+            <section
+                id="page-actividad"
+                hidden>
+
+                <a
+                    href="#"
+                    class="btn-back"
+                    id="btn-volver-curso">
+
+                    ← Volver al curso
+
+                </a>
+
 
                 <div class="container-actividad">
-                    <h2 id="titulo-pagina" style="color: #ffffff; margin-top: 0; border-bottom: 1px solid #1e293b; padding-bottom: 15px; margin-bottom: 20px;">Entrega de Actividad</h2>
 
-                    <!-- Formulario de subida (sesión normal) -->
+                    <h2
+                        id="titulo-pagina"
+                        style="
+                            color:#ffffff;
+                            margin-top:0;
+                            border-bottom:1px solid #1e293b;
+                            padding-bottom:15px;
+                            margin-bottom:20px;
+                        ">
+
+                        Entrega de Actividad
+
+                    </h2>
+
+
+                    <!-- SUBIR TAREA -->
+
                     <section id="seccion-subida">
+
                         <form id="formSubirTarea">
+
                             <div class="form-group">
-                                <label for="comentarioInput">Comentario / Mensaje:</label>
-                                <textarea id="comentarioInput" class="form-control" placeholder="Escribe un mensaje o descripción para el profesor sobre tu trabajo..."></textarea>
+
+                                <label for="comentarioInput">
+
+                                    Comentario / Mensaje:
+
+                                </label>
+
+                                <textarea
+                                    id="comentarioInput"
+                                    class="form-control"
+                                    placeholder="Escribe un mensaje o descripción para el profesor sobre tu trabajo...">
+                                </textarea>
+
                             </div>
+
+
                             <div class="form-group">
-                                <label for="fileInput">Adjuntar Archivo:</label>
-                                <input type="file" id="fileInput" class="form-control" required>
+
+                                <label for="fileInput">
+
+                                    Adjuntar Archivo:
+
+                                </label>
+
+                                <input
+                                    type="file"
+                                    id="fileInput"
+                                    class="form-control"
+                                    required>
+
                             </div>
-                            <button type="submit" class="btn-subir">Subir Tarea</button>
+
+
+                            <button
+                                type="submit"
+                                class="btn-subir">
+
+                                Subir Tarea
+
+                            </button>
+
                         </form>
+
                     </section>
 
-                    <!-- Vista de tarea (entrando con "Ver Tarea") -->
-                    <section id="seccion-vista-tarea" hidden>
-                        <h3 style="color: #38bdf8; margin-top: 0;">Detalles de la Tarea Entregada</h3>
+
+                    <!-- VER TAREA -->
+
+                    <section
+                        id="seccion-vista-tarea"
+                        hidden>
+
+                        <h3
+                            style="
+                                color:#38bdf8;
+                                margin-top:0;
+                            ">
+
+                            Detalles de la Tarea Entregada
+
+                        </h3>
+
+
                         <div class="tarea-vista">
-                            <p><strong>Comentario del Estudiante:</strong></p>
-                            <p id="comentarioMostrar" style="color: #94a3b8; font-style: italic; background: #0b0f19; padding: 12px; border-radius: 6px; margin-top: 8px;">Cargando comentario...</p>
 
-                            <div style="margin-top: 20px;">
-                                <p><strong>Archivo adjunto para descargar:</strong></p>
-                                <a id="btnDescargarArchivo" href="#" class="btn-descargar" download>Descargar Archivo</a>
+                            <p>
+                                <strong>
+                                    Comentario del Estudiante:
+                                </strong>
+                            </p>
+
+
+                            <p
+                                id="comentarioMostrar"
+                                style="
+                                    color:#94a3b8;
+                                    font-style:italic;
+                                    background:#0b0f19;
+                                    padding:12px;
+                                    border-radius:6px;
+                                    margin-top:8px;
+                                ">
+
+                                Cargando comentario...
+
+                            </p>
+
+
+                            <div
+                                style="margin-top:20px;">
+
+                                <p>
+
+                                    <strong>
+                                        Archivo adjunto para descargar:
+                                    </strong>
+
+                                </p>
+
+
+                                <a
+                                    id="btnDescargarArchivo"
+                                    href="#"
+                                    class="btn-descargar"
+                                    download>
+
+                                    Descargar Archivo
+
+                                </a>
+
                             </div>
+
                         </div>
+
                     </section>
+
                 </div>
+
             </section>
 
         </main>
 
-        <!-- Modal de información -->
-        <div id="modal-info" class="modal-overlay">
+
+        <!-- =====================================================
+             MODAL INFORMACIÓN
+        ====================================================== -->
+
+        <div
+            id="modal-info"
+            class="modal-overlay">
+
             <div class="modal-box">
-                <h3>Información del Estudiante</h3>
+
+                <h3>
+                    Información del Estudiante
+                </h3>
+
+
                 <div class="modal-body">
-                    <p><strong>Estudiante:</strong> Gonzales Soto Jhoel</p>
-                    <p><strong>Carrera:</strong> Ingeniería de Sistemas y Computación</p>
-                    <p><strong>Ciclo:</strong> IV</p>
-                    <p><strong>Universidad:</strong> Universidad Peruana Los Andes</p>
-                    <p><strong>Estado:</strong> Matriculado / Activo</p>
+
+                    <p>
+                        <strong>
+                            Estudiante:
+                        </strong>
+                        Gonzales Soto Jhoel
+                    </p>
+
+                    <p>
+                        <strong>
+                            Carrera:
+                        </strong>
+                        Ingeniería de Sistemas y Computación
+                    </p>
+
+                    <p>
+                        <strong>
+                            Ciclo:
+                        </strong>
+                        IV
+                    </p>
+
+                    <p>
+                        <strong>
+                            Universidad:
+                        </strong>
+                        Universidad Peruana Los Andes
+                    </p>
+
+                    <p>
+                        <strong>
+                            Estado:
+                        </strong>
+                        Matriculado / Activo
+                    </p>
+
                 </div>
-                <button id="btn-cerrar-info" class="btn-secondary" type="button">Cerrar</button>
+
+
+                <button
+                    id="btn-cerrar-info"
+                    class="btn-secondary"
+                    type="button">
+
+                    Cerrar
+
+                </button>
+
             </div>
+
         </div>
+
     </div>
 
+
+    <!-- =========================================================
+         JAVASCRIPT
+    ========================================================== -->
+
     <script>
+
         (function () {
+
             'use strict';
 
-            // ------------------------------------------------------------------
-            // CONFIGURACIÓN
-            // ------------------------------------------------------------------
-            const API_URL = 'http://localhost:3000/api';
-            const USUARIO_VALIDO = 'u00054e';
-            const CLAVE_VALIDA = 'combate159';
-            const CURSOS = ['Desarrollo de Aplicaciones', 'Algoritmos y Estructuras de Datos'];
-            const CURSO_POR_DEFECTO = CURSOS[0];
-            const UNIDADES = ['I', 'II', 'III', 'IV'];
+
+            /* =====================================================
+               CONFIGURACIÓN
+            ====================================================== */
+
+            const API_URL =
+                'http://localhost:3000/api';
+
+            const USUARIO_VALIDO =
+                'u00054e';
+
+            const CLAVE_VALIDA =
+                'combate159';
+
+            const CURSOS = [
+                'Desarrollo de Aplicaciones',
+                'Algoritmos y Estructuras de Datos'
+            ];
+
+            const CURSO_POR_DEFECTO =
+                CURSOS[0];
+
+            const UNIDADES = [
+                'I',
+                'II',
+                'III',
+                'IV'
+            ];
+
             const SEMANAS_POR_UNIDAD = 4;
 
-            // ------------------------------------------------------------------
-            // UTILIDADES
-            // ------------------------------------------------------------------
-            const $ = (id) => document.getElementById(id);
+
+            /* =====================================================
+               URL DE FIGMA PARA SEMANA 01
+            ====================================================== */
+
+            const FIGMA_SEMANA_01 =
+                'https://www.figma.com/design/Mz7Vu87mZjwNbmtDRg3ZTX/Sin-t%C3%ADtulo?node-id=0-1&t=gpqgJMux6lx2Ncbg-1';
+
+
+            /* =====================================================
+               UTILIDADES
+            ====================================================== */
+
+            const $ =
+                (id) => document.getElementById(id);
+
 
             function esc(texto) {
-                const div = document.createElement('div');
-                div.textContent = texto;
+
+                const div =
+                    document.createElement('div');
+
+                div.textContent =
+                    texto;
+
                 return div.innerHTML;
+
             }
 
-            // Construye un enlace tipo "#vista?clave=valor&..." ignorando valores nulos
+
             function enlace(vista, params) {
-                const query = Object.entries(params || {})
-                    .filter(([, v]) => v !== null && v !== undefined)
-                    .map(([k, v]) => k + '=' + encodeURIComponent(v))
-                    .join('&');
-                return '#' + vista + (query ? '?' + query : '');
+
+                const query =
+                    Object.entries(params || {})
+
+                        .filter(
+                            ([, v]) =>
+                                v !== null &&
+                                v !== undefined
+                        )
+
+                        .map(
+                            ([k, v]) =>
+                                k +
+                                '=' +
+                                encodeURIComponent(v)
+                        )
+
+                        .join('&');
+
+
+                return '#' +
+                    vista +
+                    (query ? '?' + query : '');
+
             }
+
 
             function leerHash() {
-                const raw = location.hash.replace(/^#/, '') || 'login';
-                const partes = raw.split('?');
-                return { vista: partes[0], params: new URLSearchParams(partes[1] || '') };
+
+                const raw =
+                    location.hash.replace(/^#/, '') ||
+                    'login';
+
+                const partes =
+                    raw.split('?');
+
+
+                return {
+
+                    vista: partes[0],
+
+                    params:
+                        new URLSearchParams(
+                            partes[1] || ''
+                        )
+
+                };
+
             }
 
-            // ------------------------------------------------------------------
-            // SESIÓN
-            // ------------------------------------------------------------------
-            let sesionEnMemoria = false;
+
+            /* =====================================================
+               SESIÓN
+            ====================================================== */
+
+            let sesionEnMemoria =
+                false;
+
 
             function estaLogueado() {
-                if (sesionEnMemoria) return true;
-                try { return sessionStorage.getItem('sesion') === '1'; } catch (e) { return false; }
+
+                if (sesionEnMemoria)
+                    return true;
+
+
+                try {
+
+                    return (
+                        sessionStorage.getItem('sesion') === '1'
+                    );
+
+                } catch (e) {
+
+                    return false;
+
+                }
+
             }
+
 
             function guardarSesion(activa) {
-                sesionEnMemoria = activa;
-                try {
-                    if (activa) sessionStorage.setItem('sesion', '1');
-                    else sessionStorage.removeItem('sesion');
-                } catch (e) { /* almacenamiento no disponible */ }
-            }
 
-            // ------------------------------------------------------------------
-            // RENDER DE PARTES REUTILIZABLES
-            // ------------------------------------------------------------------
-            function renderSidebar(vista, curso, modoTarea) {
-                let html = '';
-                if (!modoTarea) {
-                    html += '<a href="#inicio" class="nav-item' + (vista === 'inicio' ? ' active' : '') + '">Inicio</a>';
-                }
-                html += '<a href="' + enlace('curso', { nombre: curso, modo: modoTarea ? 'tarea' : null }) + '"' +
-                        ' class="nav-item' + (vista !== 'inicio' ? ' active' : '') + '">' + esc(curso) + '</a>';
-                html += '<a href="#login" class="nav-item logout" id="btn-logout">Cerrar Sesión</a>';
-                $('sidebar-nav').innerHTML = html;
-            }
+                sesionEnMemoria =
+                    activa;
 
-            function renderTabs(vista, curso, modoTarea) {
-                let html = '';
-                if (!modoTarea) {
-                    html += '<a href="#inicio" class="tab-btn' + (vista === 'inicio' ? ' active' : '') + '">Inicio</a>';
-                }
-                CURSOS.forEach(function (nombre) {
-                    const activo = vista === 'curso' && nombre === curso;
-                    html += '<a href="' + enlace('curso', { nombre: nombre, modo: modoTarea ? 'tarea' : null }) + '"' +
-                            ' class="tab-btn' + (activo ? ' active' : '') + '">' + esc(nombre) + '</a>';
-                });
-                $('tabs-container').innerHTML = html;
-            }
-
-            function renderUnidades(curso, modoTarea) {
-                let html = '';
-                for (let u = 0; u < UNIDADES.length; u++) {
-                    html += '<div class="unit-card"><div class="unit-header">Unidad ' + UNIDADES[u] + '</div><div class="weeks-grid">';
-                    for (let i = 1; i <= SEMANAS_POR_UNIDAD; i++) {
-                        const semana = u * SEMANAS_POR_UNIDAD + i;
-                        const href = enlace('actividad', { nombre: curso, semana: semana, modo: modoTarea ? 'tarea' : null });
-                        html += '<a href="' + href + '" class="week-card">' +
-                                '<div class="week-number">Semana ' + semana + '</div>' +
-                                '<div class="week-label">Entrega de Actividad</div></a>';
-                    }
-                    html += '</div></div>';
-                }
-                $('units-container').innerHTML = html;
-            }
-
-            // ------------------------------------------------------------------
-            // PÁGINA: ENTREGA DE ACTIVIDAD
-            // ------------------------------------------------------------------
-            async function cargarTareaGuardada(curso, semana) {
-                const comentario = $('comentarioMostrar');
-                const btnDescargar = $('btnDescargarArchivo');
-                comentario.textContent = 'Cargando comentario...';
-                btnDescargar.style.display = '';
-                btnDescargar.href = '#';
-                btnDescargar.textContent = 'Descargar Archivo';
 
                 try {
-                    const url = API_URL + '/entregas?curso=' + encodeURIComponent(curso) + '&semana=' + semana;
-                    const res = await fetch(url);
-                    const data = await res.json();
 
-                    if (data && data.length > 0) {
-                        const ultima = data[0];
-                        comentario.textContent = ultima.comentario || 'Sin comentarios registrados.';
-                        btnDescargar.href = API_URL + '/descargar/' + ultima.id;
-                        btnDescargar.textContent = 'Descargar Archivo (' + ultima.nombre_archivo + ')';
+                    if (activa) {
+
+                        sessionStorage.setItem(
+                            'sesion',
+                            '1'
+                        );
+
                     } else {
-                        comentario.textContent = 'No hay entregas disponibles para esta semana.';
-                        btnDescargar.style.display = 'none';
+
+                        sessionStorage.removeItem(
+                            'sesion'
+                        );
+
                     }
-                } catch (err) {
-                    console.error('Error al cargar la tarea:', err);
-                    comentario.textContent = 'No se pudo conectar con el servidor para obtener los datos de la tarea.';
-                    btnDescargar.style.display = 'none';
+
+                } catch (e) {
+
+                    /* almacenamiento no disponible */
+
                 }
+
             }
 
-            // ------------------------------------------------------------------
-            // ROUTER
-            // ------------------------------------------------------------------
+
+            /* =====================================================
+               SIDEBAR
+            ====================================================== */
+
+            function renderSidebar(
+                vista,
+                curso,
+                modoTarea
+            ) {
+
+                let html = '';
+
+
+                if (!modoTarea) {
+
+                    html +=
+                        '<a href="#inicio" class="nav-item' +
+                        (
+                            vista === 'inicio'
+                                ? ' active'
+                                : ''
+                        ) +
+                        '">' +
+                        'Inicio' +
+                        '</a>';
+
+                }
+
+
+                html +=
+                    '<a href="' +
+                    enlace(
+                        'curso',
+                        {
+                            nombre: curso,
+                            modo:
+                                modoTarea
+                                    ? 'tarea'
+                                    : null
+                        }
+                    ) +
+                    '"' +
+                    ' class="nav-item' +
+                    (
+                        vista !== 'inicio'
+                            ? ' active'
+                            : ''
+                    ) +
+                    '">' +
+                    esc(curso) +
+                    '</a>';
+
+
+                html +=
+                    '<a href="#login" ' +
+                    'class="nav-item logout" ' +
+                    'id="btn-logout">' +
+                    'Cerrar Sesión' +
+                    '</a>';
+
+
+                $('sidebar-nav').innerHTML =
+                    html;
+
+            }
+
+
+            /* =====================================================
+               TABS
+            ====================================================== */
+
+            function renderTabs(
+                vista,
+                curso,
+                modoTarea
+            ) {
+
+                let html = '';
+
+
+                if (!modoTarea) {
+
+                    html +=
+                        '<a href="#inicio" ' +
+                        'class="tab-btn' +
+                        (
+                            vista === 'inicio'
+                                ? ' active'
+                                : ''
+                        ) +
+                        '">' +
+                        'Inicio' +
+                        '</a>';
+
+                }
+
+
+                CURSOS.forEach(
+                    function (nombre) {
+
+                        const activo =
+                            vista === 'curso' &&
+                            nombre === curso;
+
+
+                        html +=
+                            '<a href="' +
+                            enlace(
+                                'curso',
+                                {
+                                    nombre: nombre,
+                                    modo:
+                                        modoTarea
+                                            ? 'tarea'
+                                            : null
+                                }
+                            ) +
+                            '"' +
+                            ' class="tab-btn' +
+                            (
+                                activo
+                                    ? ' active'
+                                    : ''
+                            ) +
+                            '">' +
+                            esc(nombre) +
+                            '</a>';
+
+                    }
+                );
+
+
+                $('tabs-container').innerHTML =
+                    html;
+
+            }
+
+
+            /* =====================================================
+               UNIDADES Y SEMANAS
+            ====================================================== */
+
+            function renderUnidades(
+                curso,
+                modoTarea
+            ) {
+
+                let html = '';
+
+
+                for (
+                    let u = 0;
+                    u < UNIDADES.length;
+                    u++
+                ) {
+
+                    html +=
+                        '<div class="unit-card">' +
+
+                        '<div class="unit-header">' +
+                        'Unidad ' +
+                        UNIDADES[u] +
+                        '</div>' +
+
+                        '<div class="weeks-grid">';
+
+
+                    for (
+                        let i = 1;
+                        i <= SEMANAS_POR_UNIDAD;
+                        i++
+                    ) {
+
+                        const semana =
+                            u *
+                            SEMANAS_POR_UNIDAD +
+                            i;
+
+
+                        /*
+                         * ==================================================
+                         * SEMANA 01 DE DESARROLLO DE APLICACIONES
+                         * ABRE EL DISEÑO DE FIGMA EN OTRA PESTAÑA
+                         * ==================================================
+                         */
+
+                        let href;
+
+                        let target = '';
+
+
+                        if (
+                            curso === 'Desarrollo de Aplicaciones' &&
+                            semana === 1
+                        ) {
+
+                            href =
+                                FIGMA_SEMANA_01;
+
+                            target =
+                                ' target="_blank" rel="noopener noreferrer" ';
+
+                        } else {
+
+                            href =
+                                enlace(
+                                    'actividad',
+                                    {
+                                        nombre: curso,
+                                        semana: semana,
+                                        modo:
+                                            modoTarea
+                                                ? 'tarea'
+                                                : null
+                                    }
+                                );
+
+                        }
+
+
+                        html +=
+                            '<a href="' +
+                            href +
+                            '"' +
+                            target +
+                            'class="week-card">' +
+
+                            '<div class="week-number">' +
+                            'Semana ' +
+                            semana +
+                            '</div>' +
+
+                            '<div class="week-label">' +
+                            (
+                                curso === 'Desarrollo de Aplicaciones' &&
+                                semana === 1
+                                    ? 'Ver diseño en Figma'
+                                    : 'Entrega de Actividad'
+                            ) +
+                            '</div>' +
+
+                            '</a>';
+
+                    }
+
+
+                    html +=
+                        '</div>' +
+                        '</div>';
+
+                }
+
+
+                $('units-container').innerHTML =
+                    html;
+
+            }
+
+
+            /* =====================================================
+               CARGAR TAREA
+            ====================================================== */
+
+            async function cargarTareaGuardada(
+                curso,
+                semana
+            ) {
+
+                const comentario =
+                    $('comentarioMostrar');
+
+                const btnDescargar =
+                    $('btnDescargarArchivo');
+
+
+                comentario.textContent =
+                    'Cargando comentario...';
+
+
+                btnDescargar.style.display =
+                    '';
+
+                btnDescargar.href =
+                    '#';
+
+                btnDescargar.textContent =
+                    'Descargar Archivo';
+
+
+                try {
+
+                    const url =
+                        API_URL +
+                        '/entregas?curso=' +
+                        encodeURIComponent(curso) +
+                        '&semana=' +
+                        semana;
+
+
+                    const res =
+                        await fetch(url);
+
+
+                    const data =
+                        await res.json();
+
+
+                    if (
+                        data &&
+                        data.length > 0
+                    ) {
+
+                        const ultima =
+                            data[0];
+
+
+                        comentario.textContent =
+                            ultima.comentario ||
+                            'Sin comentarios registrados.';
+
+
+                        btnDescargar.href =
+                            API_URL +
+                            '/descargar/' +
+                            ultima.id;
+
+
+                        btnDescargar.textContent =
+                            'Descargar Archivo (' +
+                            ultima.nombre_archivo +
+                            ')';
+
+                    } else {
+
+                        comentario.textContent =
+                            'No hay entregas disponibles para esta semana.';
+
+
+                        btnDescargar.style.display =
+                            'none';
+
+                    }
+
+                } catch (err) {
+
+                    console.error(
+                        'Error al cargar la tarea:',
+                        err
+                    );
+
+
+                    comentario.textContent =
+                        'No se pudo conectar con el servidor para obtener los datos de la tarea.';
+
+
+                    btnDescargar.style.display =
+                        'none';
+
+                }
+
+            }
+
+
+            /* =====================================================
+               ROUTER
+            ====================================================== */
+
             function render() {
-                const { vista, params } = leerHash();
-                const modoTarea = params.get('modo') === 'tarea';
-                const curso = params.get('nombre') || CURSO_POR_DEFECTO;
 
-                const vistasValidas = ['login', 'inicio', 'curso', 'actividad'];
-                if (vistasValidas.indexOf(vista) === -1) {
-                    location.hash = '#login';
+                const {
+                    vista,
+                    params
+                } = leerHash();
+
+
+                const modoTarea =
+                    params.get('modo') === 'tarea';
+
+
+                const curso =
+                    params.get('nombre') ||
+                    CURSO_POR_DEFECTO;
+
+
+                const vistasValidas = [
+                    'login',
+                    'inicio',
+                    'curso',
+                    'actividad'
+                ];
+
+
+                if (
+                    vistasValidas.indexOf(vista) === -1
+                ) {
+
+                    location.hash =
+                        '#login';
+
                     return;
+
                 }
 
-                // Protección de rutas: "modo=tarea" permite ver curso/actividad sin sesión
-                const requiereSesion = vista === 'inicio' || (vista !== 'login' && !modoTarea);
-                if (requiereSesion && !estaLogueado()) {
-                    location.hash = '#login';
+
+                /*
+                 * Protección de rutas
+                 */
+
+                const requiereSesion =
+                    vista === 'inicio' ||
+                    (
+                        vista !== 'login' &&
+                        !modoTarea
+                    );
+
+
+                if (
+                    requiereSesion &&
+                    !estaLogueado()
+                ) {
+
+                    location.hash =
+                        '#login';
+
                     return;
+
                 }
 
-                // --- Login ---
-                if (vista === 'login') {
-                    document.body.className = 'login-body';
-                    $('view-login').hidden = false;
-                    $('view-app').hidden = true;
+
+                /* LOGIN */
+
+                if (
+                    vista === 'login'
+                ) {
+
+                    document.body.className =
+                        'login-body';
+
+
+                    $('view-login').hidden =
+                        false;
+
+
+                    $('view-app').hidden =
+                        true;
+
+
                     return;
+
                 }
 
-                // --- Aplicación ---
-                document.body.className = 'dashboard-body';
-                $('view-login').hidden = true;
-                $('view-app').hidden = false;
-                $('main-dashboard').scrollTop = 0;
 
-                renderSidebar(vista, curso, modoTarea);
+                /* APLICACIÓN */
 
-                $('page-inicio').hidden = vista !== 'inicio';
-                $('page-curso').hidden = vista !== 'curso';
-                $('page-actividad').hidden = vista !== 'actividad';
-                $('tabs-container').hidden = vista === 'actividad';
+                document.body.className =
+                    'dashboard-body';
 
-                if (vista !== 'actividad') {
-                    renderTabs(vista, curso, modoTarea);
+
+                $('view-login').hidden =
+                    true;
+
+
+                $('view-app').hidden =
+                    false;
+
+
+                $('main-dashboard').scrollTop =
+                    0;
+
+
+                renderSidebar(
+                    vista,
+                    curso,
+                    modoTarea
+                );
+
+
+                $('page-inicio').hidden =
+                    vista !== 'inicio';
+
+
+                $('page-curso').hidden =
+                    vista !== 'curso';
+
+
+                $('page-actividad').hidden =
+                    vista !== 'actividad';
+
+
+                $('tabs-container').hidden =
+                    vista === 'actividad';
+
+
+                if (
+                    vista !== 'actividad'
+                ) {
+
+                    renderTabs(
+                        vista,
+                        curso,
+                        modoTarea
+                    );
+
                 }
 
-                if (vista === 'curso') {
-                    $('course-title').textContent = curso;
-                    renderUnidades(curso, modoTarea);
+
+                /* CURSO */
+
+                if (
+                    vista === 'curso'
+                ) {
+
+                    $('course-title').textContent =
+                        curso;
+
+
+                    renderUnidades(
+                        curso,
+                        modoTarea
+                    );
+
                 }
 
-                if (vista === 'actividad') {
-                    const semana = Math.min(16, Math.max(1, parseInt(params.get('semana'), 10) || 1));
-                    $('titulo-pagina').textContent = 'Entrega de Actividad - Semana ' + semana;
-                    $('btn-volver-curso').href = enlace('curso', { nombre: curso, modo: modoTarea ? 'tarea' : null });
+
+                /* ACTIVIDAD */
+
+                if (
+                    vista === 'actividad'
+                ) {
+
+                    const semana =
+                        Math.min(
+                            16,
+                            Math.max(
+                                1,
+                                parseInt(
+                                    params.get('semana'),
+                                    10
+                                ) || 1
+                            )
+                        );
+
+
+                    $('titulo-pagina').textContent =
+                        'Entrega de Actividad - Semana ' +
+                        semana;
+
+
+                    $('btn-volver-curso').href =
+                        enlace(
+                            'curso',
+                            {
+                                nombre: curso,
+                                modo:
+                                    modoTarea
+                                        ? 'tarea'
+                                        : null
+                            }
+                        );
+
 
                     if (modoTarea) {
-                        $('seccion-subida').hidden = true;
-                        $('seccion-vista-tarea').hidden = false;
-                        cargarTareaGuardada(curso, semana);
+
+                        $('seccion-subida').hidden =
+                            true;
+
+
+                        $('seccion-vista-tarea').hidden =
+                            false;
+
+
+                        cargarTareaGuardada(
+                            curso,
+                            semana
+                        );
+
                     } else {
-                        $('seccion-vista-tarea').hidden = true;
-                        $('seccion-subida').hidden = false;
+
+                        $('seccion-vista-tarea').hidden =
+                            true;
+
+
+                        $('seccion-subida').hidden =
+                            false;
+
+
                         $('formSubirTarea').reset();
+
                     }
+
                 }
+
             }
 
-            // ------------------------------------------------------------------
-            // EVENTOS
-            // ------------------------------------------------------------------
 
-            // Login
-            $('loginForm').addEventListener('submit', function (e) {
-                e.preventDefault();
-                const usuario = $('username').value.trim();
-                const clave = $('password').value;
-                const error = $('error-message');
+            /* =====================================================
+               LOGIN
+            ====================================================== */
 
-                if (usuario === USUARIO_VALIDO && clave === CLAVE_VALIDA) {
-                    error.hidden = true;
-                    $('password').value = '';
-                    guardarSesion(true);
-                    location.hash = '#inicio';
-                } else {
-                    error.textContent = 'Código o contraseña incorrectos.';
-                    error.hidden = false;
-                }
-            });
+            $('loginForm').addEventListener(
+                'submit',
+                function (e) {
 
-            // Cerrar sesión
-            document.addEventListener('click', function (e) {
-                if (e.target.closest('#btn-logout, #btn-logout-header')) guardarSesion(false);
-            });
+                    e.preventDefault();
 
-            // Subir tarea
-            $('formSubirTarea').addEventListener('submit', async function (e) {
-                e.preventDefault();
 
-                const archivo = $('fileInput').files[0];
-                if (!archivo) return;
+                    const usuario =
+                        $('username')
+                            .value
+                            .trim();
 
-                const { params } = leerHash();
-                const curso = params.get('nombre') || CURSO_POR_DEFECTO;
-                const semana = Math.min(16, Math.max(1, parseInt(params.get('semana'), 10) || 1));
 
-                const formData = new FormData();
-                formData.append('archivo', archivo);
-                formData.append('comentario', $('comentarioInput').value);
-                formData.append('estudiante', 'Gonzales Soto Jhoel');
-                formData.append('curso', curso);
-                formData.append('semana', semana);
+                    const clave =
+                        $('password').value;
 
-                try {
-                    const res = await fetch(API_URL + '/subir-tarea', { method: 'POST', body: formData });
-                    if (res.ok) {
-                        alert('¡Tarea y comentario subidos exitosamente!');
-                        location.hash = enlace('curso', { nombre: curso });
+
+                    const error =
+                        $('error-message');
+
+
+                    if (
+                        usuario === USUARIO_VALIDO &&
+                        clave === CLAVE_VALIDA
+                    ) {
+
+                        error.hidden =
+                            true;
+
+
+                        $('password').value =
+                            '';
+
+
+                        guardarSesion(
+                            true
+                        );
+
+
+                        location.hash =
+                            '#inicio';
+
                     } else {
-                        alert('Ocurrió un error al intentar subir la tarea.');
+
+                        error.textContent =
+                            'Código o contraseña incorrectos.';
+
+
+                        error.hidden =
+                            false;
+
                     }
-                } catch (err) {
-                    alert('No se pudo conectar con el servidor backend.');
+
                 }
-            });
+            );
 
-            // Modal de información
-            const modal = $('modal-info');
-            $('btn-info').addEventListener('click', function () { modal.classList.add('open'); });
-            $('btn-cerrar-info').addEventListener('click', function () { modal.classList.remove('open'); });
-            modal.addEventListener('click', function (e) { if (e.target === modal) modal.classList.remove('open'); });
-            document.addEventListener('keydown', function (e) { if (e.key === 'Escape') modal.classList.remove('open'); });
 
-            // Navegación
-            window.addEventListener('hashchange', render);
+            /* =====================================================
+               CERRAR SESIÓN
+            ====================================================== */
+
+            document.addEventListener(
+                'click',
+                function (e) {
+
+                    if (
+                        e.target.closest(
+                            '#btn-logout, #btn-logout-header'
+                        )
+                    ) {
+
+                        guardarSesion(
+                            false
+                        );
+
+                    }
+
+                }
+            );
+
+
+            /* =====================================================
+               SUBIR TAREA
+            ====================================================== */
+
+            $('formSubirTarea').addEventListener(
+                'submit',
+                async function (e) {
+
+                    e.preventDefault();
+
+
+                    const archivo =
+                        $('fileInput')
+                            .files[0];
+
+
+                    if (!archivo)
+                        return;
+
+
+                    const {
+                        params
+                    } = leerHash();
+
+
+                    const curso =
+                        params.get('nombre') ||
+                        CURSO_POR_DEFECTO;
+
+
+                    const semana =
+                        Math.min(
+                            16,
+                            Math.max(
+                                1,
+                                parseInt(
+                                    params.get('semana'),
+                                    10
+                                ) || 1
+                            )
+                        );
+
+
+                    const formData =
+                        new FormData();
+
+
+                    formData.append(
+                        'archivo',
+                        archivo
+                    );
+
+
+                    formData.append(
+                        'comentario',
+                        $('comentarioInput').value
+                    );
+
+
+                    formData.append(
+                        'estudiante',
+                        'Gonzales Soto Jhoel'
+                    );
+
+
+                    formData.append(
+                        'curso',
+                        curso
+                    );
+
+
+                    formData.append(
+                        'semana',
+                        semana
+                    );
+
+
+                    try {
+
+                        const res =
+                            await fetch(
+                                API_URL +
+                                '/subir-tarea',
+                                {
+                                    method: 'POST',
+                                    body: formData
+                                }
+                            );
+
+
+                        if (res.ok) {
+
+                            alert(
+                                '¡Tarea y comentario subidos exitosamente!'
+                            );
+
+
+                            location.hash =
+                                enlace(
+                                    'curso',
+                                    {
+                                        nombre: curso
+                                    }
+                                );
+
+                        } else {
+
+                            alert(
+                                'Ocurrió un error al intentar subir la tarea.'
+                            );
+
+                        }
+
+                    } catch (err) {
+
+                        alert(
+                            'No se pudo conectar con el servidor backend.'
+                        );
+
+                    }
+
+                }
+            );
+
+
+            /* =====================================================
+               MODAL INFORMACIÓN
+            ====================================================== */
+
+            const modal =
+                $('modal-info');
+
+
+            $('btn-info').addEventListener(
+                'click',
+                function () {
+
+                    modal.classList.add(
+                        'open'
+                    );
+
+                }
+            );
+
+
+            $('btn-cerrar-info').addEventListener(
+                'click',
+                function () {
+
+                    modal.classList.remove(
+                        'open'
+                    );
+
+                }
+            );
+
+
+            modal.addEventListener(
+                'click',
+                function (e) {
+
+                    if (
+                        e.target === modal
+                    ) {
+
+                        modal.classList.remove(
+                            'open'
+                        );
+
+                    }
+
+                }
+            );
+
+
+            document.addEventListener(
+                'keydown',
+                function (e) {
+
+                    if (
+                        e.key === 'Escape'
+                    ) {
+
+                        modal.classList.remove(
+                            'open'
+                        );
+
+                    }
+
+                }
+            );
+
+
+            /* =====================================================
+               NAVEGACIÓN
+            ====================================================== */
+
+            window.addEventListener(
+                'hashchange',
+                render
+            );
+
+
             render();
+
         })();
+
     </script>
 
 </body>
+
 </html>
+```

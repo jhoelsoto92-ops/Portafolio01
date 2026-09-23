@@ -1384,6 +1384,28 @@
                             target =
                                 ' target="_blank" rel="noopener noreferrer" ';
 
+                        } else if (
+                            curso === 'Algoritmos y Estructuras de Datos' &&
+                            semana === 1
+                        ) {
+
+                            href =
+                                'tareas/algoritmos/semana1.pdf';
+
+                            target =
+                                ' target="_blank" rel="noopener noreferrer" download ';
+
+                        } else if (
+                            curso === 'Algoritmos y Estructuras de Datos' &&
+                            semana === 2
+                        ) {
+
+                            href =
+                                'tareas/algoritmos/semana2.pdf';
+
+                            target =
+                                ' target="_blank" rel="noopener noreferrer" download ';
+
                         } else {
 
                             href =
@@ -1419,7 +1441,12 @@
                                 curso === 'Desarrollo de Aplicaciones' &&
                                 semana === 1
                                     ? 'Ver diseño en Figma'
-                                    : 'Entrega de Actividad'
+                                    : (
+                                        curso === 'Algoritmos y Estructuras de Datos' &&
+                                        (semana === 1 || semana === 2)
+                                            ? 'Descargar tarea PDF'
+                                            : 'Entrega de Actividad'
+                                    )
                             ) +
                             '</div>' +
 
@@ -2074,4 +2101,3 @@
 </body>
 
 </html>
-```

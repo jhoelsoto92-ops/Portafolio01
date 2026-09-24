@@ -4,12 +4,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Plataforma Académica</title>
 
     <style>
-        /* =========================================================
-           1. RESET Y ESTILOS GLOBALES
-        ========================================================= */
 
         * {
             box-sizing: border-box;
@@ -22,7 +20,7 @@
         }
 
         /* =========================================================
-           2. LOGIN
+           LOGIN
         ========================================================= */
 
         body.login-body {
@@ -111,7 +109,7 @@
         }
 
         /* =========================================================
-           3. DASHBOARD
+           DASHBOARD
         ========================================================= */
 
         body.dashboard-body {
@@ -315,7 +313,7 @@
         }
 
         /* =========================================================
-           4. UNIDADES Y SEMANAS
+           UNIDADES Y SEMANAS
         ========================================================= */
 
         .units-container {
@@ -378,7 +376,7 @@
         }
 
         /* =========================================================
-           5. ACTIVIDAD
+           ACTIVIDAD
         ========================================================= */
 
         .container-actividad {
@@ -472,7 +470,7 @@
         }
 
         /* =========================================================
-           6. MODAL
+           MODAL
         ========================================================= */
 
         .modal-overlay {
@@ -525,7 +523,7 @@
         }
 
         /* =========================================================
-           7. RESPONSIVE
+           RESPONSIVE
         ========================================================= */
 
         @media (max-width: 800px) {
@@ -551,7 +549,9 @@
                 grid-template-columns: repeat(2, 1fr);
             }
         }
+
     </style>
+
 </head>
 
 <body class="login-body">
@@ -567,19 +567,23 @@
         <form id="loginForm">
 
             <div class="input-group">
+
                 <input
                     type="text"
                     id="username"
                     placeholder="Usuario o Correo"
                     required>
+
             </div>
 
             <div class="input-group">
+
                 <input
                     type="password"
                     id="password"
                     placeholder="Contraseña"
                     required>
+
             </div>
 
             <button type="submit">
@@ -644,7 +648,6 @@
         <main
             class="main-dashboard"
             id="main-dashboard">
-
 
             <!-- CABECERA -->
 
@@ -1017,7 +1020,7 @@
                 'http://localhost:3000/api';
 
             const USUARIO_VALIDO =
-                'u00054e';
+                'u00054';
 
             const CLAVE_VALIDA =
                 'combate159';
@@ -1038,6 +1041,17 @@
             ];
 
             const SEMANAS_POR_UNIDAD = 4;
+
+
+            /* =====================================================
+               ENLACES DE GOOGLE DRIVE
+            ====================================================== */
+
+            const DRIVE_SEMANA_01 =
+                'https://drive.google.com/file/d/16-cpeXv7I2FdybRrHBcnHSItWAXYNdRd/view?usp=sharing';
+
+            const DRIVE_SEMANA_02 =
+                'https://drive.google.com/file/d/16-cpeXv7I2FdybRrHBcnHSItWAXYNdRd/view?usp=sharing';
 
 
             /* =====================================================
@@ -1361,17 +1375,15 @@
                             i;
 
 
-                        /*
-                         * ==================================================
-                         * SEMANA 01 DE DESARROLLO DE APLICACIONES
-                         * ABRE EL DISEÑO DE FIGMA EN OTRA PESTAÑA
-                         * ==================================================
-                         */
-
                         let href;
 
                         let target = '';
 
+
+                        /* ==================================================
+                           SEMANA 01 DE DESARROLLO DE APLICACIONES
+                           ABRE FIGMA
+                        ================================================== */
 
                         if (
                             curso === 'Desarrollo de Aplicaciones' &&
@@ -1384,16 +1396,28 @@
                             target =
                                 ' target="_blank" rel="noopener noreferrer" ';
 
+
+                        /* ==================================================
+                           SEMANA 01 DE ALGORITMOS
+                           ABRE GOOGLE DRIVE
+                        ================================================== */
+
                         } else if (
                             curso === 'Algoritmos y Estructuras de Datos' &&
                             semana === 1
                         ) {
 
                             href =
-                                'tareas/algoritmos/semana1.pdf';
+                                DRIVE_SEMANA_01;
 
                             target =
-                                ' target="_blank" rel="noopener noreferrer" download ';
+                                ' target="_blank" rel="noopener noreferrer" ';
+
+
+                        /* ==================================================
+                           SEMANA 02 DE ALGORITMOS
+                           ABRE GOOGLE DRIVE
+                        ================================================== */
 
                         } else if (
                             curso === 'Algoritmos y Estructuras de Datos' &&
@@ -1401,10 +1425,11 @@
                         ) {
 
                             href =
-                                'tareas/algoritmos/semana2.pdf';
+                                DRIVE_SEMANA_02;
 
                             target =
-                                ' target="_blank" rel="noopener noreferrer" download ';
+                                ' target="_blank" rel="noopener noreferrer" ';
+
 
                         } else {
 
@@ -1437,17 +1462,25 @@
                             '</div>' +
 
                             '<div class="week-label">' +
+
                             (
                                 curso === 'Desarrollo de Aplicaciones' &&
                                 semana === 1
+
                                     ? 'Ver diseño en Figma'
+
                                     : (
+
                                         curso === 'Algoritmos y Estructuras de Datos' &&
                                         (semana === 1 || semana === 2)
-                                            ? 'Descargar tarea PDF'
+
+                                            ? 'Ver tarea en Google Drive'
+
                                             : 'Entrega de Actividad'
+
                                     )
                             ) +
+
                             '</div>' +
 
                             '</a>';
@@ -1490,6 +1523,7 @@
 
                 btnDescargar.style.display =
                     '';
+
 
                 btnDescargar.href =
                     '#';
@@ -1613,9 +1647,7 @@
                 }
 
 
-                /*
-                 * Protección de rutas
-                 */
+                /* Protección de rutas */
 
                 const requiereSesion =
                     vista === 'inicio' ||

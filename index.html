@@ -259,9 +259,9 @@ textarea.form-control{resize:vertical;min-height:110px}
 <h3>🔑 Conectar con GitHub</h3>
 <p class="gh-hint" id="gh-aviso">Esto es solo para <b>SUBIR</b> trabajos (carpeta <b>entregas</b> de tu repositorio). Para ver y descargar no hace falta conectar nada. Estos datos se guardan solo en este navegador.</p>
 <label for="gh-owner">Usuario de GitHub</label>
-<input type="text" id="gh-owner" class="form-control" placeholder="ej. jhoel-gonzales" autocomplete="off">
+<input type="text" id="gh-owner" class="form-control" placeholder="ej. jhoelsoto92-ops" autocomplete="off">
 <label for="gh-repo">Repositorio</label>
-<input type="text" id="gh-repo" class="form-control" placeholder="ej. mis-tareas" autocomplete="off">
+<input type="text" id="gh-repo" class="form-control" placeholder="ej. tarea" autocomplete="off">
 <label for="gh-branch">Rama</label>
 <input type="text" id="gh-branch" class="form-control" value="main" autocomplete="off">
 <label for="gh-token">Token de acceso (fine-grained)</label>
@@ -334,7 +334,7 @@ const EXT=' target="_blank" rel="noopener noreferrer"';
 const MAX_MB=50;
 
 /* Configuración de GitHub por defecto */
-const GITHUB_REPO={owner:'TU_USUARIO_GITHUB',repo:'TU_REPOSITORIO',branch:'main'};
+const GITHUB_REPO={owner:'jhoelsoto92-ops',repo:'tarea',branch:'main'};
 
 const $=id=>document.getElementById(id);
 function esc(texto){const div=document.createElement('div');div.textContent=texto;return div.innerHTML}
@@ -357,7 +357,7 @@ function getCfg(){
 function setCfg(c){cfgMem=c;try{localStorage.setItem(LS_GH,JSON.stringify(c))}catch(e){}}
 function borrarCfg(){cfgMem=null;try{localStorage.removeItem(LS_GH)}catch(e){}}
 function cfgOK(){return !!getCfg().token}
-function repoOK(){const c=getCfg();return !!(c.owner&&c.repo&&!/^TU_/.test(c.owner)&&!/^TU_/.test(c.repo))}
+function repoOK(){const c=getCfg();return !!(c.owner&&c.repo)}
 
 function b64ToUtf8(b64){const bin=atob(b64.replace(/\s/g,''));const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));return new TextDecoder().decode(bytes)}
 function utf8ToB64(str){const bytes=new TextEncoder().encode(str);let bin='';for(let i=0;i<bytes.length;i+=8192)bin+=String.fromCharCode.apply(null,bytes.subarray(i,i+8192));return btoa(bin)}
@@ -445,7 +445,7 @@ async function verEntrega(entrega){
 
 function pedirConexion(msg){
   const c=getCfg();
-  $('gh-owner').value=/^TU_/.test(c.owner)?'':c.owner;$('gh-repo').value=/^TU_/.test(c.repo)?'':c.repo;$('gh-branch').value=c.branch||'main';$('gh-token').value='';
+  $('gh-owner').value=c.owner||'jhoelsoto92-ops';$('gh-repo').value=c.repo||'tarea';$('gh-branch').value=c.branch||'main';$('gh-token').value='';
   const e=$('gh-estado');e.className='gh-estado';e.textContent=msg||(c.token?'✔ Ya hay una conexión guardada en este navegador.':'');
   $('modal-gh').classList.add('open');
 }

@@ -72,12 +72,39 @@ body.dashboard-body{background:
 .week-main{display:block;text-decoration:none;color:inherit}
 .week-number{font-family:'Permanent Marker',cursive;font-size:22px;color:var(--gold);margin-bottom:4px}
 .week-label{font-size:12px;color:var(--muted);text-transform:uppercase;letter-spacing:1px}
+.week-desc{font-size:12px;color:var(--cyan);font-weight:700;text-transform:uppercase;letter-spacing:1px;margin-top:2px}
 .week-actions{display:flex;flex-direction:column;gap:8px}
 .btn-week{display:block;width:100%;padding:9px 8px;border-radius:8px;border:2px solid #000;font-family:'Oswald',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;text-align:center;text-decoration:none;cursor:pointer;transition:all .15s}
 .btn-view{background:var(--cyan);color:#000;box-shadow:3px 3px 0 var(--purple)}
 .btn-dl{background:var(--gold);color:#000;box-shadow:3px 3px 0 var(--pink)}
 .btn-week:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 #000;filter:brightness(1.1)}
 .btn-week:disabled{opacity:.6;cursor:wait}
+
+/* ---------- COLUMNA DE TARJETAS EXTRA EN SEMANA 2 ---------- */
+.semana-2-columnas{
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 12px;
+  border-top: 2px dashed var(--line);
+  padding-top: 14px;
+}
+.sub-week-card{
+  background: #050505;
+  border: 2px solid var(--line);
+  border-radius: 10px;
+  padding: 12px;
+  text-align: center;
+  color: var(--text);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all .2s;
+}
+.sub-week-card:hover{
+  border-color: var(--gold);
+  box-shadow: 4px 4px 0 var(--pink);
+}
 
 /* ---------- LISTA DESPLEGABLE DE TRABAJOS ---------- */
 .week-top{display:flex;align-items:center;gap:8px}
@@ -214,8 +241,7 @@ textarea.form-control{resize:vertical;min-height:110px}
 <div id="modal-info" class="modal-overlay">
 <div class="modal-box">
 <h3>🎧 Información del Estudiante</h3>
-<!-- Reemplaza PEGA_AQUI_TU_BASE64 por el base64 original de tu foto -->
-<img src="data:image/jpeg;base64,PEGA_AQUI_TU_BASE64" alt="Foto de Gonzales Soto Jhoel" class="foto-estudiante">
+<img src="https://via.placeholder.com/110" alt="Foto de Gonzales Soto Jhoel" class="foto-estudiante">
 <div class="modal-body">
 <p><strong>Estudiante:</strong> Gonzales Soto Jhoel</p>
 <p><strong>Carrera:</strong> Ingeniería de Sistemas y Computación</p>
@@ -248,6 +274,7 @@ textarea.form-control{resize:vertical;min-height:110px}
 </div>
 </div>
 </div>
+
 <script>
 (function(){
 'use strict';
@@ -256,24 +283,57 @@ const CLAVE_VALIDA='combate159';
 const CURSOS=['Desarrollo de Aplicaciones','Algoritmos y Estructuras de Datos'];
 const CURSO_POR_DEFECTO=CURSOS[0],UNIDADES=['I','II','III','IV'],SEMANAS_POR_UNIDAD=4;
 const FIGMA_SEMANA_01='https://www.figma.com/design/Mz7Vu87mZjwNbmtDRg3ZTX/Sin-t%C3%ADtulo?node-id=0-1&t=gpqgJMux6lx2Ncbg-1';
+const DRIVE_INFORME_FIGMA='https://drive.google.com/file/d/18gWqV08h_6vYTSWM8suYbJh7cN3RTQ5B/view?usp=sharing';
 const DRIVE_ALGORITMOS_SEMANA_01='https://drive.google.com/file/d/1tHTzYyLLIFBchCBgsPgKF8pIqpzibchh/view?usp=sharing';
 const DRIVE_ALGORITMOS_SEMANA_02='https://drive.google.com/file/d/1KHlPSEXUMpxKJ3T0kuRmb5hGUzOAfymt/view?usp=sharing';
 const DRIVE_SEMANA_03='https://drive.google.com/file/d/1Cz0bvVIMg5FnR993Dn4Xn3Sv_1tTy0Wg/view?usp=sharing';
 const DRIVE_ALGORITMOS_SEMANA_04='https://drive.google.com/file/d/1xKautVD7gC_7PI8bl-hX1fU9TuK8r3ys/view?usp=sharing';
-const DRIVE_SEMANA_02='https://drive.google.com/file/d/1GqAgYrmgtuu1FwCj1aTRRYORo2rcMRCW/view?usp=sharing';
+const DRIVE_SEMANA_02='https://drive.google.com/file/d/1iAu4sulRqTZ2_bPB6VGpILKaiwuvuygV/view?usp=sharing';
+const DRIVE_EXTRA_SEMANA_02='https://drive.google.com/file/d/1VPSgIOjbgQntR5pT9qb-irg-48Yfvt8P/view?usp=sharing';
+
+/* Enlaces específicos de la Semana 3 para Desarrollo de Aplicaciones */
+const FIGMA_DESARROLLO_SEMANA_3_TRACK_3 = 'https://www.figma.com/make/J3bFgZYXwf1Jus9TTRm1Yh/Dise%C3%B1o-de-dashboard-universitario?t=1dBpxrWTmTfaWLqa-1';
+const DRIVE_EXTRA_SEMANA_3_TRACK_3_EXTRA_1 = 'https://drive.google.com/file/d/14pNkR3kp8gi59QUoDvXS8gjpOM1BHHDE/view?usp=sharing';
+const DRIVE_EXTRA_SEMANA_3_TRACK_3_EXTRA_2 = 'https://drive.google.com/file/d/1CTE1AFgDzzM-k0ztwHC9VrV5jkuD4hSM/view?usp=sharing';
+
+/* Enlaces específicos de la Semana 4 para Desarrollo de Aplicaciones */
+const FIGMA_DESARROLLO_SEMANA_4_TRACK_4 = 'https://www.figma.com/make/cZQ92iMI4rydJWLq0b8ESI/Tienda-virtual-para-tuners?t=uFGl7mNveARtZ5OC-1';
+const DRIVE_EXTRA_SEMANA_4_TRACK_4_EXTRA_1 = 'https://drive.google.com/file/d/1ct0gaO3gkGHAr9oGrbmJR932Pr8tuDog/view?usp=sharing';
+const DRIVE_EXTRA_SEMANA_4_TRACK_4_EXTRA_2 = 'https://drive.google.com/file/d/1QKw5sxRbk44vzzd2MzAevV-B25nHjrfM/view?usp=sharing';
+
+/* Enlaces específicos de la Semana 5 para Desarrollo de Aplicaciones */
+const DRIVE_DESARROLLO_SEMANA_5_TRACK_5 = 'https://drive.google.com/file/d/1ct0gaO3gkGHAr9oGrbmJR932Pr8tuDog/view?usp=sharing';
+const DRIVE_DESARROLLO_SEMANA_5_EXTRA_1 = 'https://drive.google.com/file/d/122BeMqxiHNMal1-8OyaoyPGXNKs0uNzB/view?usp=sharing';
+const DRIVE_DESARROLLO_SEMANA_5_EXTRA_2 = 'https://drive.google.com/file/d/1Su7j39jfaz14mmGQGIih92isWfsPiuI4/view?usp=sharing';
+const DRIVE_DESARROLLO_SEMANA_5_EXTRA_3 = 'https://drive.google.com/file/d/14eMVbHtRfKGtFQMwZijI9vCa6u9PDPi6/view?usp=sharing';
+const DRIVE_DESARROLLO_SEMANA_5_EXTRA_4 = 'https://drive.google.com/file/d/1cnf3cK9I0IgzY-hhXoKXr9KiD7B0FPwB/view?usp=sharing';
+
+/* Lista de ítems específicos para el Track 2 (Extra) en la Semana 2 */
+const EXTRA_ITEMS_SEMANA_2 = [
+  { url: 'https://drive.google.com/file/d/1-eJtXQcZTkS4a1GmT7rdRL58XkEf0ct8/view?usp=sharing', desc: 'Infografia maven' },
+  { url: 'https://drive.google.com/file/d/1b3IfPq8Cb79WsrqlpCGEYEjc9SjSzJFi/view?usp=sharing', desc: 'Infografia pom . xml' },
+  { url: 'https://drive.google.com/file/d/1fwBG670pLPaQonhLhDexXWjBX1oWn1nI/view?usp=sharing', desc: 'RectanguloController.doPost' },
+  { url: 'https://drive.google.com/file/d/1vEhJaJ3spcQRYUvyl091gTKmvA_lhpqk/view?usp=sharing', desc: 'TrianguloController.doPost' },
+  { url: 'https://drive.google.com/file/d/1LxIYi8hAIfCGsdq_czf97ADrQ87tvu4U/view?usp=sharing', desc: 'Formulario.grafico' },
+  { url: 'https://drive.google.com/file/d/1FjF3HMh-ZFAgRcFNd12MiOznhg4ul6LT/view?usp=sharing', desc: 'resultados(b, h)' },
+  { url: 'https://drive.google.com/file/d/1sJYIdzj6TeS0EwagC1RK4YM7Btdhd8h6/view?usp=sharing', desc: 'dibujar(a, b, c, calculado)' }
+];
 
 /* Enlaces externos por curso y semana */
 const ENLACES={
- 'Desarrollo de Aplicaciones':{1:{url:FIGMA_SEMANA_01,tipo:'figma',etiqueta:'Ver diseño en Figma'},2:{url:DRIVE_SEMANA_02,tipo:'drive',etiqueta:'Ver tarea en Google Drive'}},
- 'Algoritmos y Estructuras de Datos':{1:{url:DRIVE_ALGORITMOS_SEMANA_01,tipo:'drive',etiqueta:'Ver tarea en Google Drive'},2:{url:DRIVE_ALGORITMOS_SEMANA_02,tipo:'drive',etiqueta:'Ver tarea en Google Drive'},3:{url:DRIVE_SEMANA_03,tipo:'drive',etiqueta:'Ver tarea en Google Drive'},4:{url:DRIVE_ALGORITMOS_SEMANA_04,tipo:'drive',etiqueta:'Ver tarea en Google Drive'}}
+ 'Desarrollo de Aplicaciones':{
+    1:{url:FIGMA_SEMANA_01,tipo:'figma',etiqueta:'Trabajo Figma'},
+    2:{url:DRIVE_SEMANA_02,tipo:'drive',etiqueta:'Codigo Aplicaciones web de geometría'},
+    3:{3:{url:FIGMA_DESARROLLO_SEMANA_3_TRACK_3,tipo:'figma',etiqueta:'figma 02'}},
+    4:{4:{url:FIGMA_DESARROLLO_SEMANA_4_TRACK_4,tipo:'figma',etiqueta:'Tienda Figma'}},
+    5:{5:{url:DRIVE_DESARROLLO_SEMANA_5_TRACK_5,tipo:'drive',etiqueta:'zip de la tienda'}}
+ },
+ 'Algoritmos y Estructuras de Datos':{1:{url:DRIVE_ALGORITMOS_SEMANA_01,tipo:'drive',etiqueta:'Tarea en Drive'},2:{url:DRIVE_ALGORITMOS_SEMANA_02,tipo:'drive',etiqueta:'Tarea en Drive'},3:{url:DRIVE_SEMANA_03,tipo:'drive',etiqueta:'Tarea en Drive'},4:{url:DRIVE_ALGORITMOS_SEMANA_04,tipo:'drive',etiqueta:'Tarea en Drive'}}
 };
 const EXT=' target="_blank" rel="noopener noreferrer"';
 const MAX_MB=50;
 
-/* ==========================================================
-   ⚠ CAMBIA ESTOS 3 DATOS: tu repositorio de GitHub (debe ser PÚBLICO
-   para que cualquiera pueda ver y descargar sin ingresar nada)
-   ========================================================== */
+/* Configuración de GitHub por defecto */
 const GITHUB_REPO={owner:'TU_USUARIO_GITHUB',repo:'TU_REPOSITORIO',branch:'main'};
 
 const $=id=>document.getElementById(id);
@@ -285,9 +345,7 @@ let sesionEnMemoria=false;
 function estaLogueado(){if(sesionEnMemoria)return true;try{return sessionStorage.getItem('sesion')==='1'}catch(e){return false}}
 function guardarSesion(activa){sesionEnMemoria=activa;try{if(activa)sessionStorage.setItem('sesion','1');else sessionStorage.removeItem('sesion')}catch(e){}}
 
-/* =====================================================
-   GITHUB: guarda y lee las entregas en tu repositorio
-   ===================================================== */
+/* GITHUB: guarda y lee las entregas en tu repositorio */
 const LS_GH='gh_config_hiphop';
 let cfgMem=null;
 function getCfg(){
@@ -298,7 +356,6 @@ function getCfg(){
 }
 function setCfg(c){cfgMem=c;try{localStorage.setItem(LS_GH,JSON.stringify(c))}catch(e){}}
 function borrarCfg(){cfgMem=null;try{localStorage.removeItem(LS_GH)}catch(e){}}
-/* cfgOK = hay token (solo hace falta para SUBIR) · repoOK = repositorio configurado (para VER / DESCARGAR) */
 function cfgOK(){return !!getCfg().token}
 function repoOK(){const c=getCfg();return !!(c.owner&&c.repo&&!/^TU_/.test(c.owner)&&!/^TU_/.test(c.repo))}
 
@@ -309,21 +366,8 @@ function safeName(n){return n.normalize('NFD').replace(/[\u0300-\u036f]/g,'').re
 function slug(t){return t.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')}
 function fmtSize(b){return b>=1048576?(Math.round(b/1048576*10)/10)+' MB':Math.max(1,Math.round(b/1024))+' KB'}
 function rutaBase(curso,semana){return 'entregas/'+slug(curso)+'/semana-'+semana+'/'}
-/* URL pública de un archivo del repo (no necesita token ni tiene límite de la API) */
 function rawUrl(ruta){const c=getCfg();return 'https://raw.githubusercontent.com/'+encodeURIComponent(c.owner)+'/'+encodeURIComponent(c.repo)+'/'+c.branch+'/'+ruta.split('/').map(encodeURIComponent).join('/')}
-/* Agrega un trabajo a la lista (indice.json) de la semana */
-async function agregarAlIndice(rutaIndice,meta,branch,curso,semana){
- for(let intento=0;intento<3;intento++){
-  let sha,datos={entregas:[]};
-  try{const r=await gh('GET',contentsPath(rutaIndice)+'?ref='+encodeURIComponent(branch));sha=r.sha;datos=JSON.parse(b64ToUtf8(r.content));if(!Array.isArray(datos.entregas))datos.entregas=[]}
-  catch(e){if(e.status!==404)throw e}
-  datos.entregas.unshift(meta);
-  try{
-   await gh('PUT',contentsPath(rutaIndice),Object.assign({message:'Actualizar lista: '+curso+' - Semana '+semana,content:utf8ToB64(JSON.stringify(datos,null,2)),branch},sha?{sha}:{}));
-   return;
-  }catch(e){if(intento===2||(e.status!==409&&e.status!==422))throw e}
- }
-}
+
 function contentsPath(ruta){const c=getCfg();return '/repos/'+encodeURIComponent(c.owner)+'/'+encodeURIComponent(c.repo)+'/contents/'+ruta.split('/').map(encodeURIComponent).join('/')}
 
 async function gh(method,path,body,accept){
@@ -341,12 +385,37 @@ function msgGH(err){
   if(err instanceof TypeError)return 'No hay conexión a internet o GitHub no responde.';
   return err.message||'Error desconocido.';
 }
+
+async function agregarAlIndice(rutaIndice,meta,branch,curso,semana){
+ for(let intento=0;intento<3;intento++){
+  let sha,datos={entregas:[]};
+  try{const r=await gh('GET',contentsPath(rutaIndice)+'?ref='+encodeURIComponent(branch));sha=r.sha;datos=JSON.parse(b64ToUtf8(r.content));if(!Array.isArray(datos.entregas))datos.entregas=[]}
+  catch(e){if(e.status!==404)throw e}
+  datos.entregas.unshift(meta);
+  try{
+   await gh('PUT',contentsPath(rutaIndice),Object.assign({message:'Actualizar lista: '+curso+' - Semana '+semana,content:utf8ToB64(JSON.stringify(datos,null,2)),branch},sha?{sha}:{}));
+   return;
+  }catch(e){if(intento===2||(e.status!==409&&e.status!==422))throw e}
+ }
+}
+
+async function listarEntregas(curso,semana){
+  if(!repoOK())return [];
+  const rutaIndice=rutaBase(curso,semana)+'indice.json';
+  try{
+    const res=await fetch(rawUrl(rutaIndice)+'?_ts='+Date.now());
+    if(!res.ok)return [];
+    const datos=await res.json();
+    return Array.isArray(datos.entregas)?datos.entregas:[];
+  }catch(e){return []}
+}
+
 async function ultimaEntrega(curso,semana){const l=await listarEntregas(curso,semana);return l.length?l[0]:null}
 const MIMES={pdf:'application/pdf',png:'image/png',jpg:'image/jpeg',jpeg:'image/jpeg',gif:'image/gif',webp:'image/webp',svg:'image/svg+xml',txt:'text/plain;charset=utf-8',csv:'text/plain;charset=utf-8',java:'text/plain;charset=utf-8',py:'text/plain;charset=utf-8',js:'text/plain;charset=utf-8',json:'text/plain;charset=utf-8',md:'text/plain;charset=utf-8',mp4:'video/mp4',mp3:'audio/mpeg'};
 const extDe=n=>((n||'').split('.').pop()||'').toLowerCase();
+
 async function obtenerBlob(entrega){
   const c=getCfg(),tipo=MIMES[extDe(entrega.nombre_archivo)]||'application/octet-stream';
-  /* con token (tú) se lee por la API; sin token (cualquier visitante) se lee el archivo público directo */
   if(c.token){
     try{
       const r=await gh('GET',contentsPath(entrega.ruta)+'?ref='+encodeURIComponent(c.branch),null,'application/vnd.github.raw+json');
@@ -355,13 +424,15 @@ async function obtenerBlob(entrega){
   }
   const res=await fetch(rawUrl(entrega.ruta));
   if(!res.ok){const err=new Error(res.status===404?'No se encontró el archivo. Revisa que el repositorio sea público.':'GitHub respondió '+res.status);err.status=res.status;throw err}
-  return new Blob([await res.blob()],{type:tipo});
+  return new Blob([await r.blob()],{type:tipo});
 }
+
 function guardarBlob(blob,nombre){
   const url=URL.createObjectURL(blob),a=document.createElement('a');
   a.href=url;a.download=nombre;document.body.appendChild(a);a.click();a.remove();
   setTimeout(()=>URL.revokeObjectURL(url),60000);
 }
+
 async function descargarEntrega(entrega){guardarBlob(await obtenerBlob(entrega),entrega.nombre_archivo)}
 async function verEntrega(entrega){
   const ventana=window.open('about:blank','_blank');
@@ -371,6 +442,7 @@ async function verEntrega(entrega){
     else{if(ventana)ventana.close();guardarBlob(blob,entrega.nombre_archivo)}
   }catch(err){if(ventana)ventana.close();throw err}
 }
+
 function pedirConexion(msg){
   const c=getCfg();
   $('gh-owner').value=/^TU_/.test(c.owner)?'':c.owner;$('gh-repo').value=/^TU_/.test(c.repo)?'':c.repo;$('gh-branch').value=c.branch||'main';$('gh-token').value='';
@@ -378,308 +450,418 @@ function pedirConexion(msg){
   $('modal-gh').classList.add('open');
 }
 
-/* =====================================================
-   VISTAS
-   ===================================================== */
+/* VISTAS Y RENDERIZADO */
 function renderSidebar(vista,curso,modoTarea){
-let html='';
-if(!modoTarea)html+='<a href="#inicio" class="nav-item'+(vista==='inicio'?' active':'')+'">Inicio</a>';
-html+='<a href="'+enlace('curso',{nombre:curso,modo:modoTarea?'tarea':null})+'" class="nav-item'+(vista!=='inicio'?' active':'')+'">'+esc(curso)+'</a>';
-html+='<a href="#login" class="nav-item logout" id="btn-logout">Cerrar Sesión</a>';
-$('sidebar-nav').innerHTML=html;
+  let html='';
+  if(!modoTarea)html+='<a href="#inicio" class="nav-item'+(vista==='inicio'?' active':'')+'">Inicio</a>';
+  html+='<a href="'+enlace('curso',{nombre:curso,modo:modoTarea?'tarea':null})+'" class="nav-item'+(vista!=='inicio'?' active':'')+'">'+esc(curso)+'</a>';
+  html+='<a href="#login" class="nav-item logout" id="btn-logout">Cerrar Sesión</a>';
+  $('sidebar-nav').innerHTML=html;
 }
+
 function renderTabs(vista,curso,modoTarea){
-let html='';
-if(!modoTarea)html+='<a href="#inicio" class="tab-btn'+(vista==='inicio'?' active':'')+'">Inicio</a>';
-CURSOS.forEach(nombre=>{const activo=vista==='curso'&&nombre===curso;html+='<a href="'+enlace('curso',{nombre,modo:modoTarea?'tarea':null})+'" class="tab-btn'+(activo?' active':'')+'">'+esc(nombre)+'</a>'});
-$('tabs-container').innerHTML=html;
+  let html='';
+  if(!modoTarea)html+='<a href="#inicio" class="tab-btn'+(vista==='inicio'?' active':'')+'">Inicio</a>';
+  CURSOS.forEach(nombre=>{const activo=vista==='curso'&&nombre===curso;html+='<a href="'+enlace('curso',{nombre,modo:modoTarea?'tarea':null})+'" class="tab-btn'+(activo?' active':'')+'">'+esc(nombre)+'</a>'});
+  $('tabs-container').innerHTML=html;
 }
+
 function renderUnidades(curso,modoTarea){
-let html='';
-for(let u=0;u<UNIDADES.length;u++){
-html+='<div class="unit-card"><div class="unit-header">🎵 Unidad '+UNIDADES[u]+' · Álbum '+(u+1)+'</div><div class="weeks-grid">';
-for(let i=1;i<=SEMANAS_POR_UNIDAD;i++){
-const semana=u*SEMANAS_POR_UNIDAD+i;
-const ext=(ENLACES[curso]||{})[semana];
-const hrefTarea=enlace('actividad',{nombre:curso,semana,modo:modoTarea?'tarea':null});
-const hrefVer=enlace('actividad',{nombre:curso,semana,modo:'tarea'});
-let principal,ver,descargar;
-if(ext){
- principal='<a href="'+ext.url+'"'+EXT+' class="week-main">';
- ver='<a href="'+ext.url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a>';
- if(ext.tipo==='drive')descargar='<a href="'+urlDescargaDrive(ext.url)+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a>';
- else descargar='<a href="'+ext.url+'"'+EXT+' class="btn-week btn-dl" title="Abre el archivo en Figma para exportarlo">⬇ Descargar</a>';
-}else{
- principal='<a href="'+hrefTarea+'" class="week-main">';
- ver='<a href="'+hrefVer+'" class="btn-week btn-view">👁 Visualizar</a>';
- descargar='<button type="button" class="btn-week btn-dl" data-descargar data-curso="'+esc(curso)+'" data-semana="'+semana+'">⬇ Descargar</button>';
-}
-const etiqueta=ext?ext.etiqueta:'Entrega de Actividad';
-html+='<div class="week-card"><div class="week-top">'+principal+'<div class="week-number">Semana '+semana+'</div><div class="week-label">Track '+semana+' · '+etiqueta+'</div></a>'
- +'<button type="button" class="btn-toggle" data-toggle data-curso="'+esc(curso)+'" data-semana="'+semana+'" title="Ver / ocultar los trabajos de esta semana" aria-expanded="false"><span class="tri">▼</span></button></div>'
- +'<div class="week-actions">'+ver+descargar+'</div><div class="panel-trab" hidden></div></div>';
-}
-html+='</div></div>';
-}
-$('units-container').innerHTML=html;
-}
+  let html='';
+  for(let u=0;u<UNIDADES.length;u++){
+    html+='<div class="unit-card"><div class="unit-header">🎵 Unidad '+UNIDADES[u]+' · Álbum '+(u+1)+'</div><div class="weeks-grid">';
+    for(let i=1;i<=SEMANAS_POR_UNIDAD;i++){
+      const semana=u*SEMANAS_POR_UNIDAD+i;
+      const cursoEnlaces = ENLACES[curso] || {};
+      const semConfig = cursoEnlaces[semana];
+      
+      let ext = null;
+      let trackEspecífico = null;
 
-let entregaActual=null;
-async function cargarTareaGuardada(curso,semana){
-const comentario=$('comentarioMostrar'),btnDescargar=$('btnDescargarArchivo'),btnVer=$('btnVerArchivo');
-entregaActual=null;
-comentario.textContent='Cargando comentario...';btnDescargar.style.display='';btnVer.style.display='';
-if(!repoOK()){
- comentario.textContent='Falta configurar el repositorio de GitHub en el código (GITHUB_REPO).';
- btnDescargar.style.display='none';btnVer.style.display='none';return;
-}
-try{
- const e=await ultimaEntrega(curso,semana);
- if(e){entregaActual=e;comentario.textContent=e.comentario||'Sin comentarios registrados.';btnDescargar.textContent='⬇ Descargar Archivo ('+e.nombre_archivo+')'}
- else{comentario.textContent='No hay entregas disponibles para esta semana.';btnDescargar.style.display='none';btnVer.style.display='none'}
-}catch(err){
- console.error('Error al cargar la tarea:',err);
- comentario.textContent='No se pudo leer la entrega: '+msgGH(err);
- btnDescargar.style.display='none';btnVer.style.display='none';
-}
-}
-function render(){
-const{vista,params}=leerHash(),modoTarea=params.get('modo')==='tarea',curso=params.get('nombre')||CURSO_POR_DEFECTO;
-const vistasValidas=['login','inicio','curso','actividad'];
-if(!vistasValidas.includes(vista)){location.hash='#login';return}
-const requiereSesion=vista==='inicio'||(vista!=='login'&&!modoTarea);
-if(requiereSesion&&!estaLogueado()){location.hash='#login';return}
-if(vista==='login'){document.body.className='login-body';$('view-login').hidden=false;$('view-app').hidden=true;return}
-document.body.className='dashboard-body';$('view-login').hidden=true;$('view-app').hidden=false;$('main-dashboard').scrollTop=0;
-$('btn-gh').hidden=modoTarea;
-renderSidebar(vista,curso,modoTarea);
-$('page-inicio').hidden=vista!=='inicio';$('page-curso').hidden=vista!=='curso';$('page-actividad').hidden=vista!=='actividad';$('tabs-container').hidden=vista==='actividad';
-if(vista!=='actividad')renderTabs(vista,curso,modoTarea);
-if(vista==='curso'){$('course-title').textContent=curso;renderUnidades(curso,modoTarea)}
-if(vista==='actividad'){
-const semana=Math.min(16,Math.max(1,parseInt(params.get('semana'),10)||1));
-$('titulo-pagina').textContent='Entrega de Actividad - Semana '+semana;
-$('btn-volver-curso').href=enlace('curso',{nombre:curso,modo:modoTarea?'tarea':null});
-if(modoTarea){$('seccion-subida').hidden=true;$('seccion-vista-tarea').hidden=false;cargarTareaGuardada(curso,semana)}
-else{$('seccion-vista-tarea').hidden=true;$('seccion-subida').hidden=false;$('formSubirTarea').reset();$('subidaEstado').textContent='';$('subidaEstado').className='subida-estado'}
-}
-}
+      if (semConfig) {
+        if (typeof semConfig === 'object' && semConfig[semana]) {
+          trackEspecífico = semConfig[semana];
+        } else if (semConfig.url) {
+          ext = semConfig;
+        }
+      }
 
-/* ---------- login ---------- */
-$('loginForm').addEventListener('submit',function(e){
-e.preventDefault();
-const usuario=$('username').value.trim(),clave=$('password').value,error=$('error-message');
-if(usuario===USUARIO_VALIDO&&clave===CLAVE_VALIDA){error.hidden=true;$('password').value='';guardarSesion(true);location.hash='#inicio'}
-else{error.textContent='Código o contraseña incorrectos.';error.hidden=false}
-});
-document.addEventListener('click',function(e){if(e.target.closest('#btn-logout, #btn-logout-header'))guardarSesion(false)});
+      const hrefTarea=enlace('actividad',{nombre:curso,semana,modo:modoTarea?'tarea':null});
+      const hrefVer=enlace('actividad',{nombre:curso,semana,modo:'tarea'});
+      let principal,ver,descargar;
 
-/* ---------- botón "Descargar" de la tarjeta de semana ---------- */
-document.addEventListener('click',async function(e){
-const btn=e.target.closest('[data-descargar]');
-if(!btn)return;
-if(!repoOK()){alert('Falta configurar el repositorio de GitHub en el código (GITHUB_REPO).');return}
-const curso=btn.dataset.curso,semana=btn.dataset.semana,textoOriginal=btn.textContent;
-btn.textContent='⏳ Buscando...';btn.disabled=true;
-try{
- const entrega=await ultimaEntrega(curso,semana);
- if(entrega)await descargarEntrega(entrega);
- else alert('Todavía no hay tarea entregada para la semana '+semana+'.');
-}catch(err){alert('No se pudo descargar: '+msgGH(err))}
-finally{btn.textContent=textoOriginal;btn.disabled=false}
-});
+      if(trackEspecífico){
+        principal='<a href="'+trackEspecífico.url+'"'+EXT+' class="week-main">';
+        ver='<a href="'+trackEspecífico.url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a>';
+        descargar='<a href="'+urlDescargaDrive(trackEspecífico.url)+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a>';
+      }else if(ext){
+        principal='<a href="'+ext.url+'"'+EXT+' class="week-main">';
+        ver='<a href="'+ext.url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a>';
+        if(ext.tipo==='drive')descargar='<a href="'+urlDescargaDrive(ext.url)+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a>';
+        else descargar='<a href="'+ext.url+'"'+EXT+' class="btn-week btn-dl" title="Abre el archivo en Figma para exportarlo">⬇ Descargar</a>';
+      }else{
+        principal='<a href="'+hrefTarea+'" class="week-main">';
+        ver='<a href="'+hrefVer+'" class="btn-week btn-view">👁 Visualizar Tarea</a>';
+        descargar='<a href="'+hrefTarea+'" class="btn-week btn-dl">🎤 Entregar Tarea</a>';
+      }
+      
+      const etiquetaTrabajo = trackEspecífico ? trackEspecífico.etiqueta : (ext && ext.etiqueta ? ext.etiqueta : 'Trabajo Figma');
 
-/* ---------- detalle de la tarea: Visualizar / Descargar ---------- */
-$('btnVerArchivo').addEventListener('click',async function(e){
-e.preventDefault();if(!entregaActual)return;
-try{await verEntrega(entregaActual)}catch(err){alert('No se pudo abrir el archivo: '+msgGH(err))}
-});
-$('btnDescargarArchivo').addEventListener('click',async function(e){
-e.preventDefault();if(!entregaActual)return;
-try{await descargarEntrega(entregaActual)}catch(err){alert('No se pudo descargar el archivo: '+msgGH(err))}
-});
+      /* --- CUADRO PRINCIPAL --- */
+      html+='<div class="week-card" id="card-sem-'+semana+'"><div class="week-top">'+principal+'<div class="week-number">Track '+semana+'</div><div class="week-label">Semana '+semana+'</div><div class="week-desc">'+esc(etiquetaTrabajo)+'</div></a>';
+      html+='<button class="btn-toggle" type="button" data-semana="'+semana+'" title="Desplegar entregas de esta semana"><span class="tri">▼</span></button></div>';
+      html+='<div class="week-actions">'+ver+descargar+'</div>';
 
-/* ---------- SUBIR TAREA (ahora a GitHub) ---------- */
-$('formSubirTarea').addEventListener('submit',async function(e){
-e.preventDefault();
-const estado=$('subidaEstado'),btn=$('btnSubirTarea');
-const setEstado=(t,err)=>{estado.textContent=t;estado.className='subida-estado'+(err?' err':'')};
-const archivos=Array.from($('fileInput').files);if(!archivos.length)return;
-if(!cfgOK()){pedirConexion('Primero conecta tu GitHub para poder subir tareas.');return}
-const grande=archivos.find(a=>a.size>MAX_MB*1024*1024);
-if(grande){setEstado('"'+grande.name+'" pesa más de '+MAX_MB+' MB. Comprímelo o súbelo a Drive.',true);return}
-const{params}=leerHash(),curso=params.get('nombre')||CURSO_POR_DEFECTO,semana=Math.min(16,Math.max(1,parseInt(params.get('semana'),10)||1));
-const c=getCfg(),branch=c.branch||'main',base=rutaBase(curso,semana),comentario=$('comentarioInput').value,total=archivos.length,claveCache=curso+'|'+semana;
-let subidos=0;
-btn.disabled=true;btn.textContent='⏳ Subiendo...';
-try{
- for(let i=0;i<total;i++){
-  const archivo=archivos[i],ts=Date.now()+i,ruta=base+ts+'__'+safeName(archivo.name),prefijo=total>1?'('+(i+1)+' de '+total+') ':'';
-  setEstado(prefijo+'Subiendo "'+archivo.name+'"... (puede tardar según el tamaño)');
-  const contenido=await fileToB64(archivo);
-  await gh('PUT',contentsPath(ruta),{message:'Entrega: '+curso+' - Semana '+semana+' - '+archivo.name,content:contenido,branch});
-  const meta={estudiante:'Gonzales Soto Jhoel',curso,semana,comentario,nombre_archivo:archivo.name,ruta,tamano:fmtSize(archivo.size),fecha:new Date(ts).toISOString()};
-  await agregarAlIndice(base+'indice.json',meta,branch,curso,semana);
-  subidos++;
- }
- delete cacheEntregas[claveCache];
- alert(total>1?'¡'+total+' trabajos subidos exitosamente a GitHub!':'¡Tarea y comentario subidos exitosamente a GitHub!');
- location.hash=enlace('curso',{nombre:curso});
-}catch(err){
- console.error(err);
- if(subidos)delete cacheEntregas[claveCache];
- setEstado((subidos?'Se subieron '+subidos+' de '+total+'. ':'')+'No se pudo subir: '+msgGH(err),true);
-}finally{btn.disabled=false;btn.textContent='🎤 Subir Tarea'}
-});
+      /* --- SEGUNDO CUADRO EXTRA (TRACK X EXTRA / EXTRA #1) --- */
+      let extraUrl = (curso==='Desarrollo de Aplicaciones' && semana===2) ? DRIVE_EXTRA_SEMANA_02 : ((curso==='Desarrollo de Aplicaciones' && semana===1) ? DRIVE_INFORME_FIGMA : (ext ? ext.url : hrefTarea));
+      let etiquetaExtra = (semana===2) ? 'Informe' : 'Trabajo Figma';
+      let tituloTrackExtra = 'Track '+semana+' (Extra)';
 
-/* ---------- LISTA DESPLEGABLE DE TRABAJOS POR SEMANA (▼) ---------- */
-const cacheEntregas={},cacheMiniaturas={};
-const EXT_IMG=['png','jpg','jpeg','gif','webp','svg'];
-const escA=t=>esc(t).replace(/"/g,'&quot;');
-function iconoArchivo(n){
- const e=extDe(n);
- if(e==='pdf')return '📕';
- if(['doc','docx'].includes(e))return '📘';
- if(['ppt','pptx'].includes(e))return '📙';
- if(['xls','xlsx','csv'].includes(e))return '📗';
- if(['zip','rar','7z'].includes(e))return '🗜️';
- if(['java','js','py','html','css','json','php','cpp','c','sql'].includes(e))return '💻';
- if(['mp4','mov','avi','mkv'].includes(e))return '🎬';
- if(['mp3','wav'].includes(e))return '🎵';
- return '📄';
-}
-function fechaCorta(iso){try{return new Date(iso).toLocaleString('es-PE',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'})}catch(e){return ''}}
-async function listarEntregas(curso,semana){
- const c=getCfg(),ruta=rutaBase(curso,semana)+'indice.json';
- /* con token (tú) la lista sale fresca por la API; sin token se lee el archivo público */
- if(c.token){
-  try{const r=await gh('GET',contentsPath(ruta)+'?ref='+encodeURIComponent(c.branch));return (JSON.parse(b64ToUtf8(r.content)).entregas)||[]}
-  catch(e){if(e.status===404)return [];if(e.status!==401&&e.status!==403)throw e}
- }
- const res=await fetch(rawUrl(ruta)+'?t='+Date.now());
- if(res.status===404)return [];
- if(!res.ok){const err=new Error('GitHub respondió '+res.status);err.status=res.status;throw err}
- return ((await res.json()).entregas)||[];
-}
-function listaHTML(key,filtro){
- const lista=cacheEntregas[key]||[],f=(filtro||'').trim().toLowerCase();
- const items=lista.map((t,i)=>({t,i})).filter(({t})=>!f||(t.nombre_archivo||'').toLowerCase().includes(f)||(t.comentario||'').toLowerCase().includes(f));
- if(!items.length)return '<div class="panel-msg">'+(lista.length?'Sin resultados.':'Aún no hay trabajos subidos en esta semana.')+'</div>';
- return items.map(({t,i})=>{
-  const esImg=EXT_IMG.includes(extDe(t.nombre_archivo));
-  return '<div class="trabajo"><div class="thumb" data-act="ver" data-i="'+i+'"'+(esImg?' data-lazy':'')+' title="Visualizar">'+iconoArchivo(t.nombre_archivo)+'</div>'
-   +'<div class="trab-info"><div class="trab-nombre" title="'+escA(t.nombre_archivo)+'">'+esc(t.nombre_archivo)+'</div>'
-   +(t.comentario?'<div class="trab-com">'+esc(t.comentario)+'</div>':'')
-   +'<div class="trab-meta">'+esc([t.tamano,fechaCorta(t.fecha)].filter(Boolean).join(' · '))+'</div></div>'
-   +'<div class="trab-acc"><button type="button" class="btn-week btn-view" data-act="ver" data-i="'+i+'">👁 Ver</button><button type="button" class="btn-week btn-dl" data-act="dl" data-i="'+i+'">⬇ Bajar</button></div></div>';
- }).join('');
-}
-function pintarPanel(panel,curso,semana){
- const key=curso+'|'+semana,n=(cacheEntregas[key]||[]).length;
- const modoTarea=leerHash().params.get('modo')==='tarea';
- panel.dataset.key=key;panel.dataset.curso=curso;panel.dataset.semana=semana;
- panel.innerHTML='<div class="panel-head"><span>📂 '+n+' trabajo'+(n===1?'':'s')+'</span><span style="display:flex;gap:6px"><button type="button" class="mini" data-refrescar title="Actualizar lista">↻</button>'
-  +(modoTarea?'':'<a class="mini" href="'+enlace('actividad',{nombre:curso,semana})+'">⬆ Subir</a>')+'</span></div>'
-  +(n>6?'<input type="text" class="buscar-trab" data-buscar placeholder="🔎 Buscar por nombre o comentario...">':'')
-  +'<div class="lista-trab">'+listaHTML(key,'')+'</div>';
- activarMiniaturas(panel);
-}
-async function cargarPanel(panel,curso,semana,forzar){
- const key=curso+'|'+semana;
- panel.dataset.key=key;panel.dataset.curso=curso;panel.dataset.semana=semana;
- if(!cacheEntregas[key]||forzar){
-  panel.innerHTML='<div class="panel-msg">⏳ Cargando trabajos...</div>';
-  try{cacheEntregas[key]=await listarEntregas(curso,semana)}
-  catch(err){
-   panel.innerHTML='<div class="panel-msg">No se pudo cargar: '+esc(msgGH(err))+'</div><div style="text-align:center"><button type="button" class="mini" data-refrescar>↻ Reintentar</button></div>';
-   return;
+      if(curso==='Desarrollo de Aplicaciones' && semana===3){
+        extraUrl = DRIVE_EXTRA_SEMANA_3_TRACK_3_EXTRA_1;
+        etiquetaExtra = 'informe tecnico';
+        tituloTrackExtra = 'Track 3 (Extra #1)';
+      }else if(curso==='Desarrollo de Aplicaciones' && semana===4){
+        extraUrl = DRIVE_EXTRA_SEMANA_4_TRACK_4_EXTRA_1;
+        etiquetaExtra = 'tienda mejorada y codigos';
+        tituloTrackExtra = 'Track 4 (Extra #1)';
+      }else if(curso==='Desarrollo de Aplicaciones' && semana===5){
+        extraUrl = DRIVE_DESARROLLO_SEMANA_5_EXTRA_1;
+        etiquetaExtra = 'manual sql';
+        tituloTrackExtra = 'Track 5 (Extra #1)';
+      }
+
+      const extraUrlDl = urlDescargaDrive(extraUrl);
+
+      html+='<div style="margin-top: 12px; border-top: 2px dashed var(--line); padding-top: 12px;">';
+      html+='  <div class="week-top"><a href="'+extraUrl+'"'+(extraUrl.startsWith('http')?EXT:'')+' class="week-main"><div class="week-number" style="font-size: 18px; color: var(--cyan);">'+esc(tituloTrackExtra)+'</div><div class="week-label">Semana '+semana+'</div><div class="week-desc">'+esc(etiquetaExtra)+'</div></a>';
+      html+='</div>';
+      if(extraUrl.startsWith('http')){
+        html+='<div class="week-actions" style="margin-top: 8px;"><a href="'+extraUrl+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a><a href="'+extraUrlDl+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a></div>';
+      }else{
+        html+='<div class="week-actions" style="margin-top: 8px;"><a href="'+hrefVer+'" class="btn-week btn-view">👁 Visualizar</a><a href="'+hrefTarea+'" class="btn-week btn-dl">🎤 Entregar Tarea</a></div>';
+      }
+      html+='</div>';
+
+      /* --- TERCER, CUARTO Y QUINTO CUADRO EXTRA (PARA SEMANAS 3, 4 Y 5) --- */
+      if(curso==='Desarrollo de Aplicaciones' && semana===3){
+        const extra2Url = DRIVE_EXTRA_SEMANA_3_TRACK_3_EXTRA_2;
+        const extra2UrlDl = urlDescargaDrive(extra2Url);
+        html+='<div style="margin-top: 12px; border-top: 2px dashed var(--line); padding-top: 12px;">';
+        html+='  <div class="week-top"><a href="'+extra2Url+'"'+EXT+' class="week-main"><div class="week-number" style="font-size: 18px; color: var(--cyan);">Track 3 (Extra #2)</div><div class="week-label">Semana 3</div><div class="week-desc">codigo zip descargar</div></a>';
+        html+='</div>';
+        html+='<div class="week-actions" style="margin-top: 8px;"><a href="'+extra2Url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a><a href="'+extra2UrlDl+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a></div>';
+        html+='</div>';
+      }else if(curso==='Desarrollo de Aplicaciones' && semana===4){
+        const extra2Url = DRIVE_EXTRA_SEMANA_4_TRACK_4_EXTRA_2;
+        const extra2UrlDl = urlDescargaDrive(extra2Url);
+        html+='<div style="margin-top: 12px; border-top: 2px dashed var(--line); padding-top: 12px;">';
+        html+='  <div class="week-top"><a href="'+extra2Url+'"'+EXT+' class="week-main"><div class="week-number" style="font-size: 18px; color: var(--cyan);">Track 4 (Extra #2)</div><div class="week-label">Semana 4</div><div class="week-desc">informe de tienda</div></a>';
+        html+='</div>';
+        html+='<div class="week-actions" style="margin-top: 8px;"><a href="'+extra2Url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a><a href="'+extra2UrlDl+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a></div>';
+        html+='</div>';
+      }else if(curso==='Desarrollo de Aplicaciones' && semana===5){
+        /* Extra #2 */
+        const extra2Url = DRIVE_DESARROLLO_SEMANA_5_EXTRA_2;
+        const extra2UrlDl = urlDescargaDrive(extra2Url);
+        html+='<div style="margin-top: 12px; border-top: 2px dashed var(--line); padding-top: 12px;">';
+        html+='  <div class="week-top"><a href="'+extra2Url+'"'+EXT+' class="week-main"><div class="week-number" style="font-size: 18px; color: var(--cyan);">Track 5 (Extra #2)</div><div class="week-label">Semana 5</div><div class="week-desc">manual azure</div></a>';
+        html+='</div>';
+        html+='<div class="week-actions" style="margin-top: 8px;"><a href="'+extra2Url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a><a href="'+extra2UrlDl+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a></div>';
+        html+='</div>';
+
+        /* Extra #3 */
+        const extra3Url = DRIVE_DESARROLLO_SEMANA_5_EXTRA_3;
+        const extra3UrlDl = urlDescargaDrive(extra3Url);
+        html+='<div style="margin-top: 12px; border-top: 2px dashed var(--line); padding-top: 12px;">';
+        html+='  <div class="week-top"><a href="'+extra3Url+'"'+EXT+' class="week-main"><div class="week-number" style="font-size: 18px; color: var(--cyan);">Track 5 (Extra #3)</div><div class="week-label">Semana 5</div><div class="week-desc">modelo conceptual</div></a>';
+        html+='</div>';
+        html+='<div class="week-actions" style="margin-top: 8px;"><a href="'+extra3Url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a><a href="'+extra3UrlDl+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a></div>';
+        html+='</div>';
+
+        /* Extra #4 */
+        const extra4Url = DRIVE_DESARROLLO_SEMANA_5_EXTRA_4;
+        const extra4UrlDl = urlDescargaDrive(extra4Url);
+        html+='<div style="margin-top: 12px; border-top: 2px dashed var(--line); padding-top: 12px;">';
+        html+='  <div class="week-top"><a href="'+extra4Url+'"'+EXT+' class="week-main"><div class="week-number" style="font-size: 18px; color: var(--cyan);">Track 5 (Extra #4)</div><div class="week-label">Semana 5</div><div class="week-desc">modelo svg</div></a>';
+        html+='</div>';
+        html+='<div class="week-actions" style="margin-top: 8px;"><a href="'+extra4Url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a><a href="'+extra4UrlDl+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a></div>';
+        html+='</div>';
+      }
+
+      /* --- COLUMNA DE 7 CUADROS EXTRA ESPECÍFICOS (SOLO PARA LA SEMANA 2) --- */
+      if(curso==='Desarrollo de Aplicaciones' && semana === 2){
+        html+='<div class="semana-2-columnas">';
+        EXTRA_ITEMS_SEMANA_2.forEach((item, idx)=>{
+          const itemDl = urlDescargaDrive(item.url);
+          html+='<div class="sub-week-card">';
+          html+='  <a href="'+item.url+'"'+EXT+' class="week-main">';
+          html+='    <div class="week-number" style="font-size: 18px; color: var(--cyan);">Track 2 (Extra) #' + (idx+1) + '</div>';
+          html+='    <div class="week-label">Semana 2</div>';
+          html+='    <div class="week-desc">' + esc(item.desc) + '</div>';
+          html+='  </a>';
+          html+='  <div class="week-actions" style="margin-top: 4px;">';
+          html+='    <a href="'+item.url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a>';
+          html+='    <a href="'+itemDl+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a>';
+          html+='  </div>';
+          html+='</div>';
+        });
+        html+='</div>';
+      }
+
+      /* --- PANEL DESPLEGABLE DE TRABAJOS --- */
+      html+='<div class="panel-trab" id="panel-sem-'+semana+'" hidden>';
+      html+='<div class="panel-head"><span>Entregas de la semana</span><a href="'+hrefTarea+'" class="mini">🎤 Subir</a></div>';
+      html+='<input type="text" class="buscar-trab" data-semana="'+semana+'" placeholder="Buscar por archivo o comentario...">';
+      html+='<div class="lista-trab" id="lista-sem-'+semana+'"><div class="panel-msg">Cargando trabajos...</div></div>';
+      html+='</div></div>';
+    }
+    html+='</div></div>';
   }
- }
- pintarPanel(panel,curso,semana);
+  $('units-container').innerHTML=html;
+
+  document.querySelectorAll('.btn-toggle').forEach(btn=>{
+    btn.onclick=async()=>{
+      const sem=btn.getAttribute('data-semana');
+      const card=$('card-sem-'+sem);
+      const panel=$('panel-sem-'+sem);
+      const abriendo=panel.hidden;
+      panel.hidden=!abriendo;
+      card.classList.toggle('abierta',abriendo);
+      if(abriendo)await cargarPanelSemanas(curso,sem);
+    };
+  });
+
+  document.querySelectorAll('.buscar-trab').forEach(inp=>{
+    inp.oninput=()=>{
+      const sem=inp.getAttribute('data-semana');
+      const term=inp.value.toLowerCase().trim();
+      const lista=$('lista-sem-'+sem);
+      lista.querySelectorAll('.trabajo').forEach(el=>{
+        const txt=el.textContent.toLowerCase();
+        el.style.display=txt.includes(term)?'':'none';
+      });
+    };
+  });
 }
 
-/* miniaturas de imágenes (se cargan solo cuando se ven en pantalla) */
-let miniActivas=0;const miniCola=[];
-function encolarMini(fn){miniCola.push(fn);siguienteMini()}
-function siguienteMini(){while(miniActivas<3&&miniCola.length){miniActivas++;miniCola.shift()().finally(()=>{miniActivas--;siguienteMini()})}}
-async function cargarMiniatura(el){
- const panel=el.closest('.panel-trab');if(!panel)return;
- const t=(cacheEntregas[panel.dataset.key]||[])[+el.dataset.i];if(!t)return;
- if(/MB/i.test(t.tamano||'')&&parseFloat(t.tamano)>8)return;
- try{
-  let url=cacheMiniaturas[t.ruta];
-  if(!url){url=URL.createObjectURL(await obtenerBlob(t));cacheMiniaturas[t.ruta]=url}
-  el.innerHTML='<img alt="" src="'+url+'">';
- }catch(e){}
+async function cargarPanelSemanas(curso,semana){
+  const lista=$('lista-sem-'+semana);
+  lista.innerHTML='<div class="panel-msg">Buscando entregas en GitHub...</div>';
+  const entregas=await listarEntregas(curso,semana);
+  if(!entregas.length){
+    lista.innerHTML='<div class="panel-msg">No hay entregas registradas en esta semana.</div>';
+    return;
+  }
+  let html='';
+  entregas.forEach((ent,idx)=>{
+    const ext=extDe(ent.nombre_archivo);
+    const esImg=['png','jpg','jpeg','gif','webp'].includes(ext);
+    const icono=esImg?'🖼️':ext==='pdf'?'📄':['java','py','js','html','css'].includes(ext)?'💻':'📁';
+    const thumb=esImg?'<img src="'+rawUrl(ent.ruta)+'" alt="Vista previa">':icono;
+    html+='<div class="trabajo"><div class="thumb" data-idx="'+idx+'">'+thumb+'</div>';
+    html+='<div class="trab-info"><div class="trab-nombre" title="'+esc(ent.nombre_archivo)+'">'+esc(ent.nombre_archivo)+'</div>';
+    html+='<div class="trab-com">'+esc(ent.comentario||'Sin comentario')+'</div>';
+    html+='<div class="trab-meta">'+esc(ent.fecha||'')+' · '+fmtSize(ent.tamano||0)+'</div></div>';
+    html+='<div class="trab-acc"><button type="button" class="btn-week btn-view btn-v-ent" data-idx="'+idx+'">👁 Ver</button>';
+    html+='<button type="button" class="btn-week btn-dl btn-d-ent" data-idx="'+idx+'">⬇ Descargar</button></div></div>';
+  });
+  lista.innerHTML=html;
+
+  lista.querySelectorAll('.btn-v-ent').forEach(btn=>{
+    btn.onclick=()=>verEntrega(entregas[btn.getAttribute('data-idx')]);
+  });
+  lista.querySelectorAll('.btn-d-ent').forEach(btn=>{
+    btn.onclick=()=>descargarEntrega(entregas[btn.getAttribute('data-idx')]);
+  });
 }
-const observador=('IntersectionObserver' in window)?new IntersectionObserver(function(es){
- es.forEach(function(en){if(en.isIntersecting){observador.unobserve(en.target);encolarMini(()=>cargarMiniatura(en.target))}});
-},{rootMargin:'120px'}):null;
-function activarMiniaturas(panel){
- panel.querySelectorAll('.thumb[data-lazy]').forEach(function(el){if(observador)observador.observe(el);else encolarMini(()=>cargarMiniatura(el))});
+
+/* ACTIVIDAD Y NAVEGACIÓN PRINCIPAL */
+async function mostrarVistaActividad(curso,semana,modoTarea){
+  $('titulo-pagina').textContent='Entrega de Actividad · Semana '+semana;
+  $('btn-volver-curso').href=enlace('curso',{nombre:curso,modo:modoTarea?'tarea':null});
+  const secSubida=$('seccion-subida');
+  const secVista=$('seccion-vista-tarea');
+  const ult=await ultimaEntrega(curso,semana);
+
+  if(modoTarea && ult){
+    secSubida.hidden=true;
+    secVista.hidden=false;
+    $('comentarioMostrar').textContent=ult.comentario||'Sin comentario';
+    $('btnVerArchivo').onclick=e=>{e.preventDefault();verEntrega(ult)};
+    $('btnDescargarArchivo').onclick=e=>{e.preventDefault();descargarEntrega(ult)};
+  }else{
+    secSubida.hidden=false;
+    secVista.hidden=true;
+  }
 }
 
-/* triángulo ▼ : abrir / cerrar la lista */
-document.addEventListener('click',function(e){
- const tg=e.target.closest('[data-toggle]');if(!tg)return;
- const card=tg.closest('.week-card'),panel=card.querySelector('.panel-trab');
- const abierta=card.classList.toggle('abierta');
- tg.setAttribute('aria-expanded',abierta?'true':'false');panel.hidden=!abierta;
- if(!abierta)return;
- if(!repoOK()){
-  panel.innerHTML='<div class="panel-msg">Falta configurar el repositorio de GitHub en el código (GITHUB_REPO).</div>';
-  return;
- }
- cargarPanel(panel,tg.dataset.curso,tg.dataset.semana,false);
-});
-/* ver / descargar un trabajo de la lista */
-document.addEventListener('click',async function(e){
- const b=e.target.closest('.panel-trab [data-act]');if(!b)return;
- const panel=b.closest('.panel-trab'),t=(cacheEntregas[panel.dataset.key]||[])[+b.dataset.i];if(!t)return;
- try{
-  if(b.dataset.act==='ver')await verEntrega(t);
-  else{const o=b.textContent;b.textContent='⏳...';b.disabled=true;try{await descargarEntrega(t)}finally{b.textContent=o;b.disabled=false}}
- }catch(err){alert('No se pudo abrir o descargar: '+msgGH(err))}
-});
-/* actualizar lista */
-document.addEventListener('click',function(e){
- const r=e.target.closest('[data-refrescar]');if(!r)return;
- const p=r.closest('.panel-trab');cargarPanel(p,p.dataset.curso,p.dataset.semana,true);
-});
-/* buscador */
-document.addEventListener('input',function(e){
- const s=e.target.closest('[data-buscar]');if(!s)return;
- const p=s.closest('.panel-trab');
- p.querySelector('.lista-trab').innerHTML=listaHTML(p.dataset.key,s.value);activarMiniaturas(p);
-});
+async function navegar(){
+  const {vista,params}=leerHash();
+  const logueado=estaLogueado();
+  const modoTarea=params.get('modo')==='tarea';
 
-/* ---------- modal GitHub ---------- */
-const modalGH=$('modal-gh');
-$('btn-gh').addEventListener('click',()=>pedirConexion());
-$('gh-cerrar').addEventListener('click',()=>modalGH.classList.remove('open'));
-modalGH.addEventListener('click',e=>{if(e.target===modalGH)modalGH.classList.remove('open')});
-$('gh-borrar').addEventListener('click',()=>{borrarCfg();pedirConexion('Datos de conexión borrados de este navegador.')});
-$('gh-guardar').addEventListener('click',async function(){
-const est=$('gh-estado'),anterior=getCfg();
-const nuevo={owner:$('gh-owner').value.trim(),repo:$('gh-repo').value.trim().replace(/\.git$/,''),branch:$('gh-branch').value.trim()||'main',token:$('gh-token').value.trim()||anterior.token||''};
-if(!nuevo.owner||!nuevo.repo||!nuevo.token){est.className='gh-estado err';est.textContent='Completa usuario, repositorio y token.';return}
-setCfg(nuevo);est.className='gh-estado';est.textContent='Probando conexión...';
-try{
- const r=await gh('GET','/repos/'+encodeURIComponent(nuevo.owner)+'/'+encodeURIComponent(nuevo.repo));
- if(r.permissions&&!r.permissions.push)throw Object.assign(new Error('El token no tiene permiso de escritura'),{status:403});
- est.textContent='✔ Conectado a '+r.full_name+'. Ya puedes subir tareas.';
- const{vista}=leerHash();if(vista==='actividad')render();
-}catch(err){setCfg(anterior);est.className='gh-estado err';est.textContent=msgGH(err)}
-});
+  if(!logueado && vista!=='login' && !modoTarea){
+    location.hash='login';
+    return;
+  }
 
-/* ---------- modal información ---------- */
-const modal=$('modal-info');
-$('btn-info').addEventListener('click',()=>modal.classList.add('open'));
-$('btn-cerrar-info').addEventListener('click',()=>modal.classList.remove('open'));
-modal.addEventListener('click',e=>{if(e.target===modal)modal.classList.remove('open')});
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){modal.classList.remove('open');modalGH.classList.remove('open')}});
-window.addEventListener('hashchange',render);
-render();
+  if(vista==='login'){
+    document.body.className='login-body';
+    $('view-login').hidden=false;
+    $('view-app').hidden=true;
+    return;
+  }
+
+  document.body.className='dashboard-body';
+  $('view-login').hidden=true;
+  $('view-app').hidden=false;
+
+  const curso=params.get('nombre')||CURSO_POR_DEFECTO;
+  const semana=parseInt(params.get('semana')||'1',10);
+
+  renderSidebar(vista,curso,modoTarea);
+  renderTabs(vista,curso,modoTarea);
+
+  $('page-inicio').hidden=vista!=='inicio';
+  $('page-curso').hidden=vista!=='curso';
+  $('page-actividad').hidden=vista!=='actividad';
+
+  if(vista==='curso'){
+    $('course-title').textContent=curso;
+    renderUnidades(curso,modoTarea);
+  }else if(vista==='actividad'){
+    await mostrarVistaActividad(curso,semana,modoTarea);
+  }
+}
+
+/* EVENTOS E INICIALIZACIÓN */
+window.addEventListener('hashchange',navegar);
+
+$('loginForm').onsubmit=e=>{
+  e.preventDefault();
+  const u=$('username').value.trim();
+  const p=$('password').value.trim();
+  if(u===USUARIO_VALIDO && p===CLAVE_VALIDA){
+    guardarSesion(true);
+    location.hash='inicio';
+  }else{
+    const err=$('error-message');
+    err.textContent='Usuario o contraseña incorrectos.';
+    err.hidden=false;
+  }
+};
+
+$('btn-logout').onclick=()=>guardarSesion(false);
+$('btn-logout-header').onclick=()=>guardarSesion(false);
+
+$('btn-info').onclick=()=>$('modal-info').classList.add('open');
+$('btn-cerrar-info').onclick=()=>$('modal-info').classList.remove('open');
+
+$('btn-gh').onclick=()=>pedirConexion();
+$('gh-cerrar').onclick=()=>$('modal-gh').classList.remove('open');
+
+$('gh-guardar').onclick=async()=>{
+  const owner=$('gh-owner').value.trim();
+  const repo=$('gh-repo').value.trim();
+  const branch=$('gh-branch').value.trim()||'main';
+  const token=$('gh-token').value.trim();
+  const est=$('gh-estado');
+
+  if(!owner||!repo||!token){
+    est.className='gh-estado err';
+    est.textContent='Por favor llena todos los campos (Usuario, Repositorio y Token).';
+    return;
+  }
+
+  setCfg({owner,repo,branch,token});
+  est.className='gh-estado';
+  est.textContent='Probando conexión con GitHub...';
+
+  try{
+    await gh('GET','/repos/'+encodeURIComponent(owner)+'/'+encodeURIComponent(repo));
+    est.textContent='✔ ¡Conexión exitosa!';
+    setTimeout(()=>$('modal-gh').classList.remove('open'),1200);
+  }catch(err){
+    est.className='gh-estado err';
+    est.textContent='Error: '+msgGH(err);
+  }
+};
+
+$('gh-borrar').onclick=()=>{
+  borrarCfg();
+  $('gh-owner').value='';$('gh-repo').value='';$('gh-token').value='';
+  const est=$('gh-estado');
+  est.className='gh-estado';
+  est.textContent='Datos eliminados de este navegador.';
+};
+
+$('formSubirTarea').onsubmit=async e=>{
+  e.preventDefault();
+  if(!cfgOK()){
+    pedirConexion('Para subir una tarea primero conecta tu cuenta de GitHub con un token.');
+    return;
+  }
+
+  const {params}=leerHash();
+  const curso=params.get('nombre')||CURSO_POR_DEFECTO;
+  const semana=params.get('semana')||'1';
+  const files=$('fileInput').files;
+  const com=$('comentarioInput').value.trim();
+  const est=$('subidaEstado');
+  const btn=$('btnSubirTarea');
+
+  if(!files.length)return;
+
+  est.className='subida-estado';
+  btn.disabled=true;
+
+  try{
+    const c=getCfg();
+    for(let i=0;i<files.length;i++){
+      const f=files[i];
+      if(f.size>MAX_MB*1024*1024)throw new Error('El archivo '+f.name+' supera el límite de '+MAX_MB+'MB.');
+      
+      est.textContent='Subiendo '+(i+1)+'/'+files.length+': '+f.name+'...';
+      const b64=await fileToB64(f);
+      const nomLimpio=safeName(f.name);
+      const ruta=rutaBase(curso,semana)+Date.now()+'_'+nomLimpio;
+      
+      let sha;
+      try{
+        const r=await gh('GET',contentsPath(ruta)+'?ref='+encodeURIComponent(c.branch));
+        sha=r.sha;
+      }catch(err){if(err.status!==404)throw err}
+
+      await gh('PUT',contentsPath(ruta),Object.assign({
+        message:'Entrega: '+curso+' - Semana '+semana,
+        content:b64,
+        branch:c.branch
+      },sha?{sha}:{}));
+
+      const meta={
+        nombre_archivo:f.name,
+        ruta:ruta,
+        tamano:f.size,
+        comentario:com,
+        fecha:new Date().toLocaleString()
+      };
+
+      await agregarAlIndice(rutaBase(curso,semana)+'indice.json',meta,c.branch,curso,semana);
+    }
+
+    est.textContent='✔ ¡Tarea subida correctamente a GitHub!';
+    $('formSubirTarea').reset();
+    setTimeout(()=>navegar(),1500);
+  }catch(err){
+    est.className='subida-estado err';
+    est.textContent='Error al subir: '+(err.message||msgGH(err));
+  }finally{
+    btn.disabled=false;
+  }
+};
+
+navegar();
 })();
 </script>
 </body>

@@ -16,7 +16,8 @@ body.login-body{background:
   radial-gradient(circle at 20% 20%,rgba(255,45,149,.25),transparent 45%),
   radial-gradient(circle at 80% 80%,rgba(139,92,246,.28),transparent 45%),
   repeating-linear-gradient(0deg,#121212 0 38px,#0c0c0c 38px 40px),#0a0a0a;
-  display:flex;justify-content:center;align-items:center;min-height:100vh;color:var(--text)}
+  display:flex;justify-content:center;align-items:center;min-height:100vh;color:var(--text);position:relative;overflow-x:hidden}
+
 .login-body .card{background:rgba(10,10,10,.92);padding:32px 28px;width:100%;max-width:450px;border:3px solid var(--gold);border-radius:18px;box-shadow:8px 8px 0 var(--pink),0 0 40px rgba(250,204,21,.15);transform:rotate(-1deg)}
 .login-body .card h2{margin-bottom:6px;font-family:'Permanent Marker',cursive;font-size:34px;color:var(--gold);text-shadow:3px 3px 0 var(--pink)}
 .login-sub{color:var(--muted);margin-bottom:22px;font-size:14px;text-transform:uppercase;letter-spacing:2px}
@@ -28,6 +29,53 @@ body.login-body{background:
 .error-text{color:var(--pink);font-size:15px;margin-top:15px;text-align:center;font-weight:600}
 .btn-ver-tarea{display:block;width:100%;text-align:center;padding:13px;margin-top:14px;background:transparent;color:var(--cyan);border:2px dashed var(--cyan);border-radius:12px;font-weight:700;text-decoration:none;font-size:15px;text-transform:uppercase;letter-spacing:2px;transition:all .25s}
 .btn-ver-tarea:hover{background:var(--cyan);color:#000;border-style:solid}
+
+.btn-login-info{display:block;width:100%;text-align:center;padding:12px;margin-top:10px;background:var(--panel2);color:var(--gold);border:2px solid var(--purple);border-radius:12px;font-weight:700;text-decoration:none;font-size:14px;text-transform:uppercase;letter-spacing:2px;cursor:pointer;transition:all .25s}
+.btn-login-info:hover{background:var(--purple);color:#fff;box-shadow:3px 3px 0 var(--gold)}
+
+/* ---------- PANEL SLIDER INFORMACIÓN (DRAWER) ---------- */
+.drawer-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.7);backdrop-filter:blur(4px);z-index:999;opacity:0;pointer-events:none;transition:opacity 0.3s ease}
+.drawer-overlay.open{opacity:1;pointer-events:auto}
+.drawer-panel{position:fixed;top:0;right:-55vw;width:50vw;max-width:600px;height:100vh;background:#0d0d0d;border-left:3px solid var(--gold);box-shadow:-10px 0 30px rgba(0,0,0,0.8);z-index:1000;padding:30px;display:flex;flex-direction:column;overflow-y:auto;transition:right 0.35s cubic-bezier(0.16, 1, 0.3, 1)}
+.drawer-panel.open{right:0}
+.drawer-header{display:flex;justify-content:space-between;align-items:center;border-bottom:2px dashed var(--line);padding-bottom:15px;margin-bottom:20px}
+.drawer-header h3{font-family:'Permanent Marker',cursive;font-size:26px;color:var(--gold);text-shadow:2px 2px 0 var(--pink)}
+.btn-close-drawer{background:#000;border:2px solid var(--pink);color:var(--pink);border-radius:8px;width:36px;height:36px;font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.btn-close-drawer:hover{background:var(--pink);color:#fff}
+.drawer-body{flex:1;display:flex;flex-direction:column;align-items:center}
+.foto-estudiante-drawer{width:140px;height:140px;object-fit:cover;border-radius:50%;margin:10px 0 20px;border:4px solid var(--pink);box-shadow:0 0 0 3px var(--gold),0 0 22px rgba(255,45,149,.45)}
+.info-list-drawer{width:100%;max-width:450px;display:flex;flex-direction:column;gap:12px}
+.info-item{background:#141414;border:1px solid var(--line);border-left:4px solid var(--cyan);border-radius:8px;padding:12px 16px;font-size:15px;color:var(--text)}
+.info-item strong{color:var(--gold);text-transform:uppercase;font-size:12px;letter-spacing:1px;display:block;margin-bottom:4px}
+
+/* Cuadro de WhatsApp en la parte inferior del Perfil */
+.btn-whatsapp-drawer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  max-width: 450px;
+  margin-top: 15px;
+  padding: 14px;
+  background: #25d366;
+  color: #000;
+  border: 2px solid #000;
+  border-radius: 10px;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  text-decoration: none;
+  box-shadow: 4px 4px 0 var(--pink);
+  transition: all 0.2s ease;
+}
+.btn-whatsapp-drawer:hover {
+  transform: translate(2px, 2px);
+  box-shadow: 2px 2px 0 var(--pink);
+  background: #1ebc57;
+}
 
 /* ---------- DASHBOARD ---------- */
 body.dashboard-body{background:
@@ -51,12 +99,13 @@ body.dashboard-body{background:
 .user-info h1{font-family:'Permanent Marker',cursive;font-size:28px;font-weight:400;color:var(--gold);text-shadow:2px 2px 0 var(--pink);margin-bottom:4px}
 .user-subtitle{font-family:'Oswald',sans-serif;font-size:14px;font-weight:400;color:var(--muted);text-shadow:none}
 .header-actions{display:flex;gap:10px;flex-wrap:wrap}
-.btn-logout-header{display:inline-block;text-decoration:none;color:var(--pink);border-color:var(--pink)}
-.btn-logout-header:hover{background:#2a0a1a}
 .btn-secondary{background:var(--panel2);border:2px solid var(--purple);color:var(--text);padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px;font-family:inherit;font-weight:600;text-transform:uppercase;letter-spacing:1px;width:auto;transition:all .2s}
 .btn-secondary:hover{background:var(--purple);box-shadow:3px 3px 0 var(--gold)}
 .btn-gh{border-color:var(--cyan);color:var(--cyan)}
 .btn-gh:hover{background:var(--cyan);color:#000;box-shadow:3px 3px 0 var(--pink)}
+.btn-logout-header{display:inline-block;text-decoration:none;color:var(--pink);border-color:var(--pink)}
+.btn-logout-header:hover{background:#2a0a1a}
+
 .tabs-container{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:30px}
 .tab-btn{display:inline-block;background:var(--panel);border:2px solid var(--line);color:var(--muted);padding:10px 20px;border-radius:6px;cursor:pointer;font-size:14px;font-weight:600;text-decoration:none;text-transform:uppercase;letter-spacing:1px;transition:all .2s}
 .tab-btn.active,.tab-btn:hover{background:var(--pink);color:#fff;border-color:var(--pink);box-shadow:3px 3px 0 var(--gold)}
@@ -65,7 +114,46 @@ body.dashboard-body{background:
 .welcome-banner p{color:var(--muted);font-size:16px}
 .units-container{display:flex;flex-direction:column;gap:22px;margin-top:25px}
 .unit-card{background:var(--panel);border:2px solid var(--line);border-radius:12px;overflow:hidden}
-.unit-card .unit-header{background:linear-gradient(90deg,var(--purple),var(--pink));padding:14px 20px;font-family:'Rubik Mono One',sans-serif;font-size:15px;color:#fff;border-bottom:3px solid var(--gold)}
+
+.unit-card .unit-header{
+  background:linear-gradient(90deg,var(--purple),var(--pink));
+  padding:12px 20px;
+  font-family:'Rubik Mono One',sans-serif;
+  font-size:15px;
+  color:#fff;
+  border-bottom:3px solid var(--gold);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.btn-toggle-unidad{
+  width: 32px;
+  height: 32px;
+  background: #000;
+  border: 2px solid var(--gold);
+  color: var(--gold);
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: all .2s;
+}
+.btn-toggle-unidad:hover{
+  background: var(--gold);
+  color: #000;
+  box-shadow: 2px 2px 0 var(--pink);
+}
+.btn-toggle-unidad .tri-unit{
+  display: inline-block;
+  transition: transform 0.25s;
+}
+.btn-toggle-unidad.abierto .tri-unit{
+  transform: rotate(180deg);
+}
+
 .weeks-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;padding:20px;align-items:start}
 .week-card{background:#050505;border:2px solid var(--line);border-radius:10px;padding:14px;text-align:center;color:var(--text);display:flex;flex-direction:column;gap:12px;transition:all .2s}
 .week-card:hover{border-color:var(--gold);box-shadow:5px 5px 0 var(--pink);transform:translateY(-3px)}
@@ -80,51 +168,26 @@ body.dashboard-body{background:
 .btn-week:hover{transform:translate(2px,2px);box-shadow:1px 1px 0 #000;filter:brightness(1.1)}
 .btn-week:disabled{opacity:.6;cursor:wait}
 
-/* ---------- COLUMNA DE TARJETAS EXTRA EN SEMANA 2 ---------- */
-.semana-2-columnas{
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  margin-top: 12px;
-  border-top: 2px dashed var(--line);
-  padding-top: 14px;
-}
-.sub-week-card{
-  background: #050505;
-  border: 2px solid var(--line);
-  border-radius: 10px;
-  padding: 12px;
-  text-align: center;
-  color: var(--text);
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  transition: all .2s;
-}
-.sub-week-card:hover{
-  border-color: var(--gold);
-  box-shadow: 4px 4px 0 var(--pink);
-}
+.extra-box-header{display:flex;align-items:center;justify-content:space-between;margin-top:12px;border-top:2px dashed var(--line);padding-top:10px}
+.semana-2-columnas{display:flex;flex-direction:column;gap:10px;margin-top:10px;padding-top:5px;transition:all 0.3s ease}
+.semana-2-columnas.colapsado{display:none!important}
+.sub-week-card{background:#050505;border:2px solid var(--line);border-radius:10px;padding:10px;text-align:center;color:var(--text);display:flex;flex-direction:column;gap:8px;transition:all .2s}
+.sub-week-card:hover{border-color:var(--gold);box-shadow:4px 4px 0 var(--pink)}
 
-/* ---------- LISTA DESPLEGABLE DE TRABAJOS ---------- */
 .week-top{display:flex;align-items:center;gap:8px}
 .week-top .week-main{flex:1;min-width:0}
-.btn-toggle{flex:0 0 auto;width:36px;height:36px;border-radius:8px;border:2px solid var(--gold);background:#000;color:var(--gold);font-size:14px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.btn-toggle{flex:0 0 auto;width:32px;height:32px;border-radius:6px;border:2px solid var(--gold);background:#000;color:var(--gold);font-size:12px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
 .btn-toggle:hover{background:var(--gold);color:#000;box-shadow:2px 2px 0 var(--pink)}
 .btn-toggle .tri{display:inline-block;transition:transform .25s}
-.week-card.abierta{border-color:var(--gold)}
-.week-card.abierta:hover{transform:none}
-.week-card.abierta .btn-toggle{background:var(--gold);color:#000}
-.week-card.abierta .btn-toggle .tri{transform:rotate(180deg)}
+.btn-toggle.abierto .tri{transform:rotate(180deg)}
+
 .panel-trab{border-top:2px dashed var(--line);padding-top:12px;text-align:left}
 .panel-head{display:flex;justify-content:space-between;align-items:center;gap:6px;margin-bottom:10px;font-size:13px;font-weight:700;color:var(--cyan);text-transform:uppercase;letter-spacing:1px}
 .mini{display:inline-block;background:var(--panel2);border:1px solid var(--purple);color:var(--text);border-radius:6px;padding:4px 9px;font:600 11px 'Oswald',sans-serif;letter-spacing:1px;text-transform:uppercase;text-decoration:none;cursor:pointer;transition:all .15s}
 .mini:hover{background:var(--purple)}
 .buscar-trab{width:100%;padding:8px 10px;margin-bottom:10px;background:#000;border:2px solid #3f3f46;border-radius:6px;color:#fff;font-family:inherit;font-size:13px}
 .buscar-trab:focus{outline:none;border-color:var(--cyan)}
-.lista-trab{max-height:380px;overflow-y:auto;display:flex;flex-direction:column;gap:8px;padding-right:4px}
-.lista-trab::-webkit-scrollbar{width:6px}
-.lista-trab::-webkit-scrollbar-thumb{background:var(--purple);border-radius:3px}
+.lista-trab{display:flex;flex-direction:column;gap:8px}
 .trabajo{background:var(--panel);border:1px solid var(--line);border-radius:8px;padding:8px;display:grid;grid-template-columns:54px 1fr;gap:8px 10px}
 .trabajo:hover{border-color:var(--pink)}
 .thumb{width:54px;height:54px;border-radius:6px;background:#000;border:1px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:24px;overflow:hidden;cursor:pointer}
@@ -157,14 +220,11 @@ textarea.form-control{resize:vertical;min-height:110px}
 .btn-back{display:inline-block;color:var(--cyan);text-decoration:none;font-size:15px;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:18px}
 .btn-back:hover{color:var(--gold)}
 
-/* ---------- MODAL ---------- */
+/* ---------- MODALES (GITHUB Y EDITAR PERFIL) ---------- */
 .modal-overlay{display:none;position:fixed;inset:0;width:100%;height:100%;background:rgba(0,0,0,.8);z-index:1000;justify-content:center;align-items:center}
 .modal-overlay.open{display:flex}
 .modal-box{background:var(--panel);border:3px solid var(--gold);border-radius:14px;padding:25px;width:380px;max-width:90%;max-height:92vh;overflow-y:auto;color:#fff;box-shadow:8px 8px 0 var(--pink)}
 .modal-box h3{font-family:'Permanent Marker',cursive;font-weight:400;font-size:24px;color:var(--gold);border-bottom:2px dashed var(--line);padding-bottom:10px}
-.foto-estudiante{width:110px;height:110px;object-fit:cover;border-radius:50%;display:block;margin:15px auto 18px;border:4px solid var(--pink);box-shadow:0 0 0 3px var(--gold),0 0 22px rgba(255,45,149,.45)}
-.modal-body{margin:15px 0;font-size:15px;line-height:1.8;color:var(--text)}
-.modal-body strong{color:var(--cyan)}
 .modal-box .btn-secondary{width:100%;margin-top:10px;background:var(--gold);color:#000;border-color:#000;font-weight:700}
 .modal-box .btn-secondary.alt{background:transparent;color:var(--pink);border-color:var(--pink)}
 .gh-modal{width:460px}
@@ -173,21 +233,77 @@ textarea.form-control{resize:vertical;min-height:110px}
 .gh-estado{margin-top:12px;font-size:14px;min-height:18px;color:var(--cyan)}
 .gh-estado.err{color:var(--pink);font-weight:600}
 
-@media(max-width:800px){body.dashboard-body,#view-app{flex-direction:column}.sidebar{width:100%;height:auto;position:static;border-right:none;border-bottom:3px solid var(--gold)}.main-dashboard{padding:20px}.weeks-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:800px){
+  body.dashboard-body,#view-app{flex-direction:column}
+  .sidebar{width:100%;height:auto;position:static;border-right:none;border-bottom:3px solid var(--gold)}
+  .main-dashboard{padding:20px}
+  .weeks-grid{grid-template-columns:repeat(2,1fr)}
+  .drawer-panel{width:80vw;right:-85vw;}
+}
 </style>
 </head>
 <body class="login-body">
-<div class="card" id="view-login">
-<h2>🎤 Entra al Estudio</h2>
-<p class="login-sub">Plataforma Académica · Hip Hop Edition</p>
-<form id="loginForm">
-<div class="input-group"><input type="text" id="username" placeholder="Usuario o Correo" required></div>
-<div class="input-group"><input type="password" id="password" placeholder="Contraseña" required></div>
-<button type="submit">Ingresar</button>
-<p id="error-message" class="error-text" hidden></p>
-</form>
-<a href="#curso?nombre=Desarrollo%20de%20Aplicaciones&modo=tarea" class="btn-ver-tarea">🎧 Ver Tarea</a>
+
+<!-- PANEL SLIDER DE MEDIA PANTALLA (INFORMACIÓN) -->
+<div class="drawer-overlay" id="drawer-overlay"></div>
+<div class="drawer-panel" id="drawer-panel">
+  <div class="drawer-header">
+    <h3>🎧 Perfil del Estudiante</h3>
+    <button class="btn-close-drawer" id="btn-close-drawer">✕</button>
+  </div>
+  <div class="drawer-body">
+    <img id="user-profile-img" src="" alt="Foto de Gonzales Soto Jhoel" class="foto-estudiante-drawer">
+    <div class="info-list-drawer">
+      <div class="info-item">
+        <strong>Nombre:</strong>
+        <span id="info-nombre">Jhoel</span>
+      </div>
+      <div class="info-item">
+        <strong>Apellidos:</strong>
+        <span id="info-apellidos">Gonzales Soto</span>
+      </div>
+      <div class="info-item">
+        <strong>Código:</strong>
+        <span id="info-codigo">u00054e</span>
+      </div>
+      <div class="info-item">
+        <strong>Carrera:</strong>
+        <span id="info-carrera">Ingeniería de Sistemas y Computación</span>
+      </div>
+      <div class="info-item">
+        <strong>Ciclo:</strong>
+        <span id="info-ciclo">IV</span>
+      </div>
+      <div class="info-item">
+        <strong>Edad:</strong>
+        <span id="info-edad">19 años</span>
+      </div>
+      <div class="info-item">
+        <strong>Universidad:</strong>
+        <span id="info-universidad">Universidad Peruana Los Andes</span>
+      </div>
+    </div>
+
+    <!-- BOTÓN DE WHATSAPP DENTRO DEL PERFIL DEL ESTUDIANTE -->
+    <a href="https://wa.me/51901481960?text=Hola%20Jhoel,%20quisiera%20más%20información." target="_blank" rel="noopener noreferrer" class="btn-whatsapp-drawer">
+      💬 Contactar por WhatsApp
+    </a>
+  </div>
 </div>
+
+<div class="card" id="view-login">
+  <h2>🎤 Entra al Estudio</h2>
+  <p class="login-sub">Plataforma Académica · Hip Hop Edition</p>
+  <form id="loginForm">
+    <div class="input-group"><input type="text" id="username" placeholder="Usuario o Correo" required></div>
+    <div class="input-group"><input type="password" id="password" placeholder="Contraseña" required></div>
+    <button type="submit">Ingresar</button>
+    <p id="error-message" class="error-text" hidden></p>
+  </form>
+  <a href="#curso?nombre=Desarrollo%20de%20Aplicaciones&modo=tarea" class="btn-ver-tarea">🎧 Ver Tarea</a>
+  <button type="button" class="btn-login-info" id="btn-login-info">👤 Información del Estudiante</button>
+</div>
+
 <div id="view-app" hidden>
 <aside class="sidebar">
 <div class="brand"><div class="brand-logo-container"><div class="upla-logo">UPLA</div></div>
@@ -196,16 +312,15 @@ textarea.form-control{resize:vertical;min-height:110px}
 </aside>
 <main class="main-dashboard" id="main-dashboard">
 <header class="user-header">
-<div class="user-info"><h1>🎤 Gonzales Soto Jhoel <span class="user-subtitle">· Ingeniería de sistemas y computación · Ciclo IV</span></h1></div>
-<div class="header-actions">
-<button class="btn-secondary btn-gh" id="btn-gh" type="button">🔑 GitHub</button>
-<button class="btn-secondary" id="btn-info" type="button">Información</button>
-<button class="btn-secondary" type="button">Editar perfil</button>
-<a href="#login" class="btn-secondary btn-logout-header" id="btn-logout-header">Cerrar sesión</a>
+<div class="user-info"><h1 id="header-user-title">🎤 <span id="hdr-nombre-completo">Gonzales Soto Jhoel</span> <span class="user-subtitle">· <span id="hdr-carrera">Ingeniería de Sistemas y Computación</span> · Ciclo <span id="hdr-ciclo">IV</span></span></h1></div>
+
+<!-- BOTONES EXACTOS SEGÚN MODO -->
+<div class="header-actions" id="header-actions">
+  <!-- Renderizado con JS -->
 </div>
 </header>
 <div class="tabs-container" id="tabs-container"></div>
-<section id="page-inicio" hidden><div class="welcome-banner"><h2>Yo, Jhoel 🔥</h2><p>Aquí reúnes las actividades de tus dos cursos, organizadas por unidad. ¡Que no pare el beat!</p></div></section>
+<section id="page-inicio" hidden><div class="welcome-banner"><h2 id="banner-saludo">Yo, Jhoel 🔥</h2><p>Aquí reúnes las actividades de tus dos cursos, organizadas por unidad. ¡Que no pare el beat!</p></div></section>
 <section id="page-curso" hidden>
 <div class="welcome-banner"><h2 id="course-title"></h2><p>Estructura de contenidos organizada en 4 unidades (álbumes) y 16 semanas lectivas (tracks).</p></div>
 <div class="units-container" id="units-container"></div>
@@ -237,22 +352,6 @@ textarea.form-control{resize:vertical;min-height:110px}
 </section>
 </main>
 
-<!-- MODAL: INFORMACIÓN -->
-<div id="modal-info" class="modal-overlay">
-<div class="modal-box">
-<h3>🎧 Información del Estudiante</h3>
-<img src="https://via.placeholder.com/110" alt="Foto de Gonzales Soto Jhoel" class="foto-estudiante">
-<div class="modal-body">
-<p><strong>Estudiante:</strong> Gonzales Soto Jhoel</p>
-<p><strong>Carrera:</strong> Ingeniería de Sistemas y Computación</p>
-<p><strong>Ciclo:</strong> IV</p>
-<p><strong>Universidad:</strong> Universidad Peruana Los Andes</p>
-<p><strong>Estado:</strong> Matriculado / Activo</p>
-</div>
-<button id="btn-cerrar-info" class="btn-secondary" type="button">Cerrar</button>
-</div>
-</div>
-
 <!-- MODAL: CONECTAR GITHUB -->
 <div id="modal-gh" class="modal-overlay">
 <div class="modal-box gh-modal">
@@ -273,11 +372,32 @@ textarea.form-control{resize:vertical;min-height:110px}
 <button id="gh-cerrar" class="btn-secondary alt" type="button">Cerrar</button>
 </div>
 </div>
+
+<!-- MODAL: EDITAR PERFIL -->
+<div id="modal-edit" class="modal-overlay">
+<div class="modal-box gh-modal">
+<h3>✏️ Editar Perfil del Estudiante</h3>
+<label for="edit-nombre">Nombre</label>
+<input type="text" id="edit-nombre" class="form-control">
+<label for="edit-apellidos">Apellidos</label>
+<input type="text" id="edit-apellidos" class="form-control">
+<label for="edit-carrera">Carrera</label>
+<input type="text" id="edit-carrera" class="form-control">
+<label for="edit-ciclo">Ciclo</label>
+<input type="text" id="edit-ciclo" class="form-control">
+<label for="edit-edad">Edad</label>
+<input type="text" id="edit-edad" class="form-control">
+<button id="edit-guardar" class="btn-secondary" type="button" style="margin-top:20px;">Guardar Cambios</button>
+<button id="edit-cerrar" class="btn-secondary alt" type="button">Cancelar</button>
+</div>
+</div>
+
 </div>
 
 <script>
 (function(){
 'use strict';
+
 const USUARIO_VALIDO='u00054e';
 const CLAVE_VALIDA='combate159';
 const CURSOS=['Desarrollo de Aplicaciones','Algoritmos y Estructuras de Datos'];
@@ -291,24 +411,36 @@ const DRIVE_ALGORITMOS_SEMANA_04='https://drive.google.com/file/d/1xKautVD7gC_7P
 const DRIVE_SEMANA_02='https://drive.google.com/file/d/1iAu4sulRqTZ2_bPB6VGpILKaiwuvuygV/view?usp=sharing';
 const DRIVE_EXTRA_SEMANA_02='https://drive.google.com/file/d/1VPSgIOjbgQntR5pT9qb-irg-48Yfvt8P/view?usp=sharing';
 
-/* Enlaces específicos de la Semana 3 para Desarrollo de Aplicaciones */
 const FIGMA_DESARROLLO_SEMANA_3_TRACK_3 = 'https://www.figma.com/make/J3bFgZYXwf1Jus9TTRm1Yh/Dise%C3%B1o-de-dashboard-universitario?t=1dBpxrWTmTfaWLqa-1';
 const DRIVE_EXTRA_SEMANA_3_TRACK_3_EXTRA_1 = 'https://drive.google.com/file/d/14pNkR3kp8gi59QUoDvXS8gjpOM1BHHDE/view?usp=sharing';
 const DRIVE_EXTRA_SEMANA_3_TRACK_3_EXTRA_2 = 'https://drive.google.com/file/d/1CTE1AFgDzzM-k0ztwHC9VrV5jkuD4hSM/view?usp=sharing';
 
-/* Enlaces específicos de la Semana 4 para Desarrollo de Aplicaciones */
 const FIGMA_DESARROLLO_SEMANA_4_TRACK_4 = 'https://www.figma.com/make/cZQ92iMI4rydJWLq0b8ESI/Tienda-virtual-para-tuners?t=uFGl7mNveARtZ5OC-1';
 const DRIVE_EXTRA_SEMANA_4_TRACK_4_EXTRA_1 = 'https://drive.google.com/file/d/1ct0gaO3gkGHAr9oGrbmJR932Pr8tuDog/view?usp=sharing';
 const DRIVE_EXTRA_SEMANA_4_TRACK_4_EXTRA_2 = 'https://drive.google.com/file/d/1QKw5sxRbk44vzzd2MzAevV-B25nHjrfM/view?usp=sharing';
 
-/* Enlaces específicos de la Semana 5 para Desarrollo de Aplicaciones */
 const DRIVE_DESARROLLO_SEMANA_5_TRACK_5 = 'https://drive.google.com/file/d/1ct0gaO3gkGHAr9oGrbmJR932Pr8tuDog/view?usp=sharing';
 const DRIVE_DESARROLLO_SEMANA_5_EXTRA_1 = 'https://drive.google.com/file/d/122BeMqxiHNMal1-8OyaoyPGXNKs0uNzB/view?usp=sharing';
 const DRIVE_DESARROLLO_SEMANA_5_EXTRA_2 = 'https://drive.google.com/file/d/1Su7j39jfaz14mmGQGIih92isWfsPiuI4/view?usp=sharing';
 const DRIVE_DESARROLLO_SEMANA_5_EXTRA_3 = 'https://drive.google.com/file/d/14eMVbHtRfKGtFQMwZijI9vCa6u9PDPi6/view?usp=sharing';
 const DRIVE_DESARROLLO_SEMANA_5_EXTRA_4 = 'https://drive.google.com/file/d/1cnf3cK9I0IgzY-hhXoKXr9KiD7B0FPwB/view?usp=sharing';
 
-/* Lista de ítems específicos para el Track 2 (Extra) en la Semana 2 */
+const EXTRA_ALGORITMOS_SEMANA_5 = Array.from({length: 30}, (_, i) => ({
+  url: 'https://drive.google.com/drive/folders/1-Algoritmos-Extra-UPLA',
+  desc: 'Modulo de estructura avanzada #' + (i + 1)
+}));
+
+const EXTRA_ALGORITMOS_SEMANA_6 = Array.from({length: 38}, (_, i) => ({
+  url: 'https://drive.google.com/drive/folders/1-Algoritmos-Semana6-UPLA',
+  desc: 'Modulo de algoritmos complejos #' + (i + 1)
+}));
+
+/* 40 Tracks Extras para la Semana 7 de Algoritmos (estilo idéntico con Visualizar y Descargar) */
+const EXTRA_ALGORITMOS_SEMANA_7 = Array.from({length: 40}, (_, i) => ({
+  url: 'https://drive.google.com/drive/folders/1-Algoritmos-Semana7-UPLA',
+  desc: 'Modulo de optimización y árboles #' + (i + 1)
+}));
+
 const EXTRA_ITEMS_SEMANA_2 = [
   { url: 'https://drive.google.com/file/d/1-eJtXQcZTkS4a1GmT7rdRL58XkEf0ct8/view?usp=sharing', desc: 'Infografia maven' },
   { url: 'https://drive.google.com/file/d/1b3IfPq8Cb79WsrqlpCGEYEjc9SjSzJFi/view?usp=sharing', desc: 'Infografia pom . xml' },
@@ -316,10 +448,9 @@ const EXTRA_ITEMS_SEMANA_2 = [
   { url: 'https://drive.google.com/file/d/1vEhJaJ3spcQRYUvyl091gTKmvA_lhpqk/view?usp=sharing', desc: 'TrianguloController.doPost' },
   { url: 'https://drive.google.com/file/d/1LxIYi8hAIfCGsdq_czf97ADrQ87tvu4U/view?usp=sharing', desc: 'Formulario.grafico' },
   { url: 'https://drive.google.com/file/d/1FjF3HMh-ZFAgRcFNd12MiOznhg4ul6LT/view?usp=sharing', desc: 'resultados(b, h)' },
-  { url: 'https://drive.google.com/file/d/1sJYIdzj6TeS0EwagC1RK4YM7Btdhd8h6/view?usp=sharing', desc: 'dibujar(a, b, c, calculado)' }
+  { url: 'https://drive.google.com/file/d/1sJYIdzj6TeS0EwagC1RK4YM7Btdhd8h6/view?usp=sharing', desc: 'dibujar(a, b, c, calculated)' }
 ];
 
-/* Enlaces externos por curso y semana */
 const ENLACES={
  'Desarrollo de Aplicaciones':{
     1:{url:FIGMA_SEMANA_01,tipo:'figma',etiqueta:'Trabajo Figma'},
@@ -333,7 +464,6 @@ const ENLACES={
 const EXT=' target="_blank" rel="noopener noreferrer"';
 const MAX_MB=50;
 
-/* Configuración de GitHub por defecto */
 const GITHUB_REPO={owner:'jhoelsoto92-ops',repo:'tarea',branch:'main'};
 
 const $=id=>document.getElementById(id);
@@ -345,7 +475,48 @@ let sesionEnMemoria=false;
 function estaLogueado(){if(sesionEnMemoria)return true;try{return sessionStorage.getItem('sesion')==='1'}catch(e){return false}}
 function guardarSesion(activa){sesionEnMemoria=activa;try{if(activa)sessionStorage.setItem('sesion','1');else sessionStorage.removeItem('sesion')}catch(e){}}
 
-/* GITHUB: guarda y lee las entregas en tu repositorio */
+/* --- DATOS Y EDICIÓN DEL PERFIL EN LOCALSTORAGE --- */
+const LS_PERFIL = 'perfil_estudiante_hiphop';
+let perfilDefecto = {
+  nombre: 'Jhoel',
+  apellidos: 'Gonzales Soto',
+  codigo: 'u00054e',
+  carrera: 'Ingeniería de Sistemas y Computación',
+  ciclo: 'IV',
+  edad: '19 años',
+  universidad: 'Universidad Peruana Los Andes'
+};
+
+function getPerfil(){
+  try{
+    const p = JSON.parse(localStorage.getItem(LS_PERFIL));
+    return p ? Object.assign({}, perfilDefecto, p) : perfilDefecto;
+  }catch(e){ return perfilDefecto; }
+}
+
+function setPerfil(p){
+  try{ localStorage.setItem(LS_PERFIL, JSON.stringify(p)); }catch(e){}
+  actualizarUIPerfil();
+}
+
+function actualizarUIPerfil(){
+  const p = getPerfil();
+  // En panel slider
+  $('info-nombre').textContent = p.nombre;
+  $('info-apellidos').textContent = p.apellidos;
+  $('info-codigo').textContent = p.codigo;
+  $('info-carrera').textContent = p.carrera;
+  $('info-ciclo').textContent = p.ciclo;
+  $('info-edad').textContent = p.edad;
+  $('info-universidad').textContent = p.universidad;
+
+  // En cabecera y banner
+  $('hdr-nombre-completo').textContent = p.apellidos + ' ' + p.nombre;
+  $('hdr-carrera').textContent = p.carrera;
+  $('hdr-ciclo').textContent = p.ciclo;
+  if($('banner-saludo')) $('banner-saludo').textContent = 'Yo, ' + p.nombre + ' 🔥';
+}
+
 const LS_GH='gh_config_hiphop';
 let cfgMem=null;
 function getCfg(){
@@ -354,9 +525,6 @@ function getCfg(){
   g=g||{};
   return{owner:g.owner||GITHUB_REPO.owner,repo:g.repo||GITHUB_REPO.repo,branch:g.branch||GITHUB_REPO.branch||'main',token:g.token||''};
 }
-function setCfg(c){cfgMem=c;try{localStorage.setItem(LS_GH,JSON.stringify(c))}catch(e){}}
-function borrarCfg(){cfgMem=null;try{localStorage.removeItem(LS_GH)}catch(e){}}
-function cfgOK(){return !!getCfg().token}
 function repoOK(){const c=getCfg();return !!(c.owner&&c.repo)}
 
 function b64ToUtf8(b64){const bin=atob(b64.replace(/\s/g,''));const bytes=Uint8Array.from(bin,c=>c.charCodeAt(0));return new TextDecoder().decode(bytes)}
@@ -375,15 +543,6 @@ async function gh(method,path,body,accept){
   const res=await fetch('https://api.github.com'+path,{method,headers:Object.assign({'Accept':accept||'application/vnd.github+json','Authorization':'Bearer '+c.token},body?{'Content-Type':'application/json'}:{}),body:body?JSON.stringify(body):undefined});
   if(!res.ok){let m='';try{m=(await res.json()).message}catch(e){}const err=new Error(m||res.statusText);err.status=res.status;throw err}
   return accept?res:res.json();
-}
-function msgGH(err){
-  if(err.status===401)return 'El token no es válido o venció. Crea uno nuevo en GitHub.';
-  if(err.status===403)return 'Sin permiso. Revisa que el token tenga "Contents: Read and write" sobre tu repositorio.';
-  if(err.status===404)return 'No se encontró el repositorio. Revisa usuario, repositorio, rama y que el token tenga acceso a él.';
-  if(err.status===413)return 'El archivo es demasiado grande para GitHub.';
-  if(err.status===422)return 'GitHub rechazó la operación: '+err.message;
-  if(err instanceof TypeError)return 'No hay conexión a internet o GitHub no responde.';
-  return err.message||'Error desconocido.';
 }
 
 async function agregarAlIndice(rutaIndice,meta,branch,curso,semana){
@@ -424,7 +583,7 @@ async function obtenerBlob(entrega){
   }
   const res=await fetch(rawUrl(entrega.ruta));
   if(!res.ok){const err=new Error(res.status===404?'No se encontró el archivo. Revisa que el repositorio sea público.':'GitHub respondió '+res.status);err.status=res.status;throw err}
-  return new Blob([await r.blob()],{type:tipo});
+  return new Blob([await res.blob()],{type:tipo});
 }
 
 function guardarBlob(blob,nombre){
@@ -443,14 +602,27 @@ async function verEntrega(entrega){
   }catch(err){if(ventana)ventana.close();throw err}
 }
 
-function pedirConexion(msg){
-  const c=getCfg();
-  $('gh-owner').value=c.owner||'jhoelsoto92-ops';$('gh-repo').value=c.repo||'tarea';$('gh-branch').value=c.branch||'main';$('gh-token').value='';
-  const e=$('gh-estado');e.className='gh-estado';e.textContent=msg||(c.token?'✔ Ya hay una conexión guardada en este navegador.':'');
-  $('modal-gh').classList.add('open');
+/* VISTAS Y RENDERIZADO DE CABECERA */
+function renderHeaderActions(modoTarea){
+  const container = $('header-actions');
+  if(!container) return;
+
+  if(modoTarea){
+    container.innerHTML = `<a href="#login" class="btn-secondary btn-logout-header" id="btn-logout-header">CERRAR SESIÓN</a>`;
+  }else{
+    container.innerHTML = `
+      <button class="btn-secondary btn-gh" id="btn-gh" type="button">🔑 GITHUB</button>
+      <button class="btn-secondary" id="btn-info" type="button">INFORMACIÓN</button>
+      <button class="btn-secondary" id="btn-edit" type="button">EDITAR PERFIL</button>
+      <a href="#login" class="btn-secondary btn-logout-header" id="btn-logout-header">CERRAR SESIÓN</a>
+    `;
+
+    $('btn-info').onclick = abrirDrawer;
+    $('btn-edit').onclick = abrirModalEditarPerfil;
+    $('btn-gh').onclick = () => { $('modal-gh').classList.add('open'); };
+  }
 }
 
-/* VISTAS Y RENDERIZADO */
 function renderSidebar(vista,curso,modoTarea){
   let html='';
   if(!modoTarea)html+='<a href="#inicio" class="nav-item'+(vista==='inicio'?' active':'')+'">Inicio</a>';
@@ -469,7 +641,12 @@ function renderTabs(vista,curso,modoTarea){
 function renderUnidades(curso,modoTarea){
   let html='';
   for(let u=0;u<UNIDADES.length;u++){
-    html+='<div class="unit-card"><div class="unit-header">🎵 Unidad '+UNIDADES[u]+' · Álbum '+(u+1)+'</div><div class="weeks-grid">';
+    const uId = 'unit-grid-' + u;
+    html+='<div class="unit-card">';
+    html+='<div class="unit-header"><span>🎵 UNIDAD '+UNIDADES[u]+' · ÁLBUM '+(u+1)+'</span>';
+    html+='<button class="btn-toggle-unidad" type="button" data-target="'+uId+'" title="Encoger o expandir unidad"><span class="tri-unit">▼</span></button></div>';
+    
+    html+='<div class="weeks-grid" id="'+uId+'" hidden>';
     for(let i=1;i<=SEMANAS_POR_UNIDAD;i++){
       const semana=u*SEMANAS_POR_UNIDAD+i;
       const cursoEnlaces = ENLACES[curso] || {};
@@ -507,12 +684,10 @@ function renderUnidades(curso,modoTarea){
       
       const etiquetaTrabajo = trackEspecífico ? trackEspecífico.etiqueta : (ext && ext.etiqueta ? ext.etiqueta : 'Trabajo Figma');
 
-      /* --- CUADRO PRINCIPAL --- */
       html+='<div class="week-card" id="card-sem-'+semana+'"><div class="week-top">'+principal+'<div class="week-number">Track '+semana+'</div><div class="week-label">Semana '+semana+'</div><div class="week-desc">'+esc(etiquetaTrabajo)+'</div></a>';
       html+='<button class="btn-toggle" type="button" data-semana="'+semana+'" title="Desplegar entregas de esta semana"><span class="tri">▼</span></button></div>';
       html+='<div class="week-actions">'+ver+descargar+'</div>';
 
-      /* --- SEGUNDO CUADRO EXTRA (TRACK X EXTRA / EXTRA #1) --- */
       let extraUrl = (curso==='Desarrollo de Aplicaciones' && semana===2) ? DRIVE_EXTRA_SEMANA_02 : ((curso==='Desarrollo de Aplicaciones' && semana===1) ? DRIVE_INFORME_FIGMA : (ext ? ext.url : hrefTarea));
       let etiquetaExtra = (semana===2) ? 'Informe' : 'Trabajo Figma';
       let tituloTrackExtra = 'Track '+semana+' (Extra)';
@@ -543,7 +718,6 @@ function renderUnidades(curso,modoTarea){
       }
       html+='</div>';
 
-      /* --- TERCER, CUARTO Y QUINTO CUADRO EXTRA (PARA SEMANAS 3, 4 Y 5) --- */
       if(curso==='Desarrollo de Aplicaciones' && semana===3){
         const extra2Url = DRIVE_EXTRA_SEMANA_3_TRACK_3_EXTRA_2;
         const extra2UrlDl = urlDescargaDrive(extra2Url);
@@ -561,7 +735,6 @@ function renderUnidades(curso,modoTarea){
         html+='<div class="week-actions" style="margin-top: 8px;"><a href="'+extra2Url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a><a href="'+extra2UrlDl+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a></div>';
         html+='</div>';
       }else if(curso==='Desarrollo de Aplicaciones' && semana===5){
-        /* Extra #2 */
         const extra2Url = DRIVE_DESARROLLO_SEMANA_5_EXTRA_2;
         const extra2UrlDl = urlDescargaDrive(extra2Url);
         html+='<div style="margin-top: 12px; border-top: 2px dashed var(--line); padding-top: 12px;">';
@@ -570,7 +743,6 @@ function renderUnidades(curso,modoTarea){
         html+='<div class="week-actions" style="margin-top: 8px;"><a href="'+extra2Url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a><a href="'+extra2UrlDl+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a></div>';
         html+='</div>';
 
-        /* Extra #3 */
         const extra3Url = DRIVE_DESARROLLO_SEMANA_5_EXTRA_3;
         const extra3UrlDl = urlDescargaDrive(extra3Url);
         html+='<div style="margin-top: 12px; border-top: 2px dashed var(--line); padding-top: 12px;">';
@@ -579,7 +751,6 @@ function renderUnidades(curso,modoTarea){
         html+='<div class="week-actions" style="margin-top: 8px;"><a href="'+extra3Url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a><a href="'+extra3UrlDl+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a></div>';
         html+='</div>';
 
-        /* Extra #4 */
         const extra4Url = DRIVE_DESARROLLO_SEMANA_5_EXTRA_4;
         const extra4UrlDl = urlDescargaDrive(extra4Url);
         html+='<div style="margin-top: 12px; border-top: 2px dashed var(--line); padding-top: 12px;">';
@@ -589,9 +760,11 @@ function renderUnidades(curso,modoTarea){
         html+='</div>';
       }
 
-      /* --- COLUMNA DE 7 CUADROS EXTRA ESPECÍFICOS (SOLO PARA LA SEMANA 2) --- */
       if(curso==='Desarrollo de Aplicaciones' && semana === 2){
-        html+='<div class="semana-2-columnas">';
+        const extId = 'extra-sem-2';
+        html+='<div class="extra-box-header"><span style="font-size:11px;font-weight:700;color:var(--cyan);text-transform:uppercase;">7 TRACKS EXTRA</span>';
+        html+='<button class="btn-toggle" type="button" data-target="'+extId+'" title="Ver tracks extra"><span class="tri">▼</span></button></div>';
+        html+='<div class="semana-2-columnas colapsado" id="'+extId+'">';
         EXTRA_ITEMS_SEMANA_2.forEach((item, idx)=>{
           const itemDl = urlDescargaDrive(item.url);
           html+='<div class="sub-week-card">';
@@ -609,7 +782,73 @@ function renderUnidades(curso,modoTarea){
         html+='</div>';
       }
 
-      /* --- PANEL DESPLEGABLE DE TRABAJOS --- */
+      if(curso==='Algoritmos y Estructuras de Datos' && semana === 5){
+        const extId = 'extra-sem-5';
+        html+='<div class="extra-box-header"><span style="font-size:11px;font-weight:700;color:var(--cyan);text-transform:uppercase;">30 TRACKS EXTRA</span>';
+        html+='<button class="btn-toggle" type="button" data-target="'+extId+'" title="Ver tracks extra"><span class="tri">▼</span></button></div>';
+        html+='<div class="semana-2-columnas colapsado" id="'+extId+'">';
+        EXTRA_ALGORITMOS_SEMANA_5.forEach((item, idx)=>{
+          const itemDl = urlDescargaDrive(item.url);
+          html+='<div class="sub-week-card">';
+          html+='  <a href="'+item.url+'"'+EXT+' class="week-main">';
+          html+='    <div class="week-number" style="font-size: 18px; color: var(--gold);">Algoritmos Track Extra #' + (idx+1) + '</div>';
+          html+='    <div class="week-label">Semana 5</div>';
+          html+='    <div class="week-desc">' + esc(item.desc) + '</div>';
+          html+='  </a>';
+          html+='  <div class="week-actions" style="margin-top: 4px;">';
+          html+='    <a href="'+item.url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a>';
+          html+='    <a href="'+itemDl+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a>';
+          html+='  </div>';
+          html+='</div>';
+        });
+        html+='</div>';
+      }
+
+      if(curso==='Algoritmos y Estructuras de Datos' && semana === 6){
+        const extId = 'extra-sem-6';
+        html+='<div class="extra-box-header"><span style="font-size:11px;font-weight:700;color:var(--cyan);text-transform:uppercase;">38 TRACKS EXTRA</span>';
+        html+='<button class="btn-toggle" type="button" data-target="'+extId+'" title="Ver tracks extra"><span class="tri">▼</span></button></div>';
+        html+='<div class="semana-2-columnas colapsado" id="'+extId+'">';
+        EXTRA_ALGORITMOS_SEMANA_6.forEach((item, idx)=>{
+          const itemDl = urlDescargaDrive(item.url);
+          html+='<div class="sub-week-card">';
+          html+='  <a href="'+item.url+'"'+EXT+' class="week-main">';
+          html+='    <div class="week-number" style="font-size: 18px; color: var(--gold);">Algoritmos Track 6 Extra #' + (idx+1) + '</div>';
+          html+='    <div class="week-label">Semana 6</div>';
+          html+='    <div class="week-desc">' + esc(item.desc) + '</div>';
+          html+='  </a>';
+          html+='  <div class="week-actions" style="margin-top: 4px;">';
+          html+='    <a href="'+item.url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a>';
+          html+='    <a href="'+itemDl+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a>';
+          html+='  </div>';
+          html+='</div>';
+        });
+        html+='</div>';
+      }
+
+      /* 40 Tracks Extras para la Semana 7 de Algoritmos (IDÉNTICO A SEMANA 5 Y 6: VISUALIZAR Y DESCARGAR) */
+      if(curso==='Algoritmos y Estructuras de Datos' && semana === 7){
+        const extId = 'extra-sem-7';
+        html+='<div class="extra-box-header"><span style="font-size:11px;font-weight:700;color:var(--cyan);text-transform:uppercase;">40 TRACKS EXTRA</span>';
+        html+='<button class="btn-toggle" type="button" data-target="'+extId+'" title="Ver tracks extra"><span class="tri">▼</span></button></div>';
+        html+='<div class="semana-2-columnas colapsado" id="'+extId+'">';
+        EXTRA_ALGORITMOS_SEMANA_7.forEach((item, idx)=>{
+          const itemDl = urlDescargaDrive(item.url);
+          html+='<div class="sub-week-card">';
+          html+='  <a href="'+item.url+'"'+EXT+' class="week-main">';
+          html+='    <div class="week-number" style="font-size: 18px; color: var(--gold);">Algoritmos Track 7 Extra #' + (idx+1) + '</div>';
+          html+='    <div class="week-label">Semana 7</div>';
+          html+='    <div class="week-desc">' + esc(item.desc) + '</div>';
+          html+='  </a>';
+          html+='  <div class="week-actions" style="margin-top: 4px;">';
+          html+='    <a href="'+item.url+'"'+EXT+' class="btn-week btn-view">👁 Visualizar</a>';
+          html+='    <a href="'+itemDl+'"'+EXT+' class="btn-week btn-dl">⬇ Descargar</a>';
+          html+='  </div>';
+          html+='</div>';
+        });
+        html+='</div>';
+      }
+
       html+='<div class="panel-trab" id="panel-sem-'+semana+'" hidden>';
       html+='<div class="panel-head"><span>Entregas de la semana</span><a href="'+hrefTarea+'" class="mini">🎤 Subir</a></div>';
       html+='<input type="text" class="buscar-trab" data-semana="'+semana+'" placeholder="Buscar por archivo o comentario...">';
@@ -620,15 +859,33 @@ function renderUnidades(curso,modoTarea){
   }
   $('units-container').innerHTML=html;
 
+  document.querySelectorAll('.btn-toggle-unidad').forEach(btn=>{
+    btn.onclick=()=>{
+      const targetId=btn.getAttribute('data-target');
+      const grid=$(targetId);
+      const estaOculto=grid.hidden;
+      grid.hidden=!estaOculto;
+      btn.classList.toggle('abierto',estaOculto);
+    };
+  });
+
   document.querySelectorAll('.btn-toggle').forEach(btn=>{
     btn.onclick=async()=>{
-      const sem=btn.getAttribute('data-semana');
-      const card=$('card-sem-'+sem);
-      const panel=$('panel-sem-'+sem);
-      const abriendo=panel.hidden;
-      panel.hidden=!abriendo;
-      card.classList.toggle('abierta',abriendo);
-      if(abriendo)await cargarPanelSemanas(curso,sem);
+      const targetId=btn.getAttribute('data-target');
+      if(targetId){
+        const container=$(targetId);
+        const colapsado=container.classList.toggle('colapsado');
+        btn.classList.toggle('abierto',!colapsado);
+      }else{
+        const sem=btn.getAttribute('data-semana');
+        const card=$('card-sem-'+sem);
+        const panel=$('panel-sem-'+sem);
+        const abriendo=panel.hidden;
+        panel.hidden=!abriendo;
+        card.classList.toggle('abierta',abriendo);
+        btn.classList.toggle('abierto',abriendo);
+        if(abriendo)await cargarPanelSemanas(curso,sem);
+      }
     };
   });
 
@@ -676,7 +933,6 @@ async function cargarPanelSemanas(curso,semana){
   });
 }
 
-/* ACTIVIDAD Y NAVEGACIÓN PRINCIPAL */
 async function mostrarVistaActividad(curso,semana,modoTarea){
   $('titulo-pagina').textContent='Entrega de Actividad · Semana '+semana;
   $('btn-volver-curso').href=enlace('curso',{nombre:curso,modo:modoTarea?'tarea':null});
@@ -717,9 +973,12 @@ async function navegar(){
   $('view-login').hidden=true;
   $('view-app').hidden=false;
 
+  actualizarUIPerfil();
+
   const curso=params.get('nombre')||CURSO_POR_DEFECTO;
   const semana=parseInt(params.get('semana')||'1',10);
 
+  renderHeaderActions(modoTarea);
   renderSidebar(vista,curso,modoTarea);
   renderTabs(vista,curso,modoTarea);
 
@@ -735,9 +994,59 @@ async function navegar(){
   }
 }
 
-/* EVENTOS E INICIALIZACIÓN */
 window.addEventListener('hashchange',navegar);
 
+/* DRAWER (INFORMACIÓN) */
+const closeDrawerBtn = $('btn-close-drawer');
+const drawerOverlay = $('drawer-overlay');
+const drawerPanel = $('drawer-panel');
+
+function abrirDrawer(){
+  actualizarUIPerfil();
+  drawerOverlay.classList.add('open');
+  drawerPanel.classList.add('open');
+}
+function cerrarDrawer(){
+  drawerOverlay.classList.remove('open');
+  drawerPanel.classList.remove('open');
+}
+
+closeDrawerBtn.onclick = cerrarDrawer;
+drawerOverlay.onclick = cerrarDrawer;
+
+$('btn-login-info').onclick = abrirDrawer;
+
+/* EDITAR PERFIL MODAL */
+function abrirModalEditarPerfil(){
+  const p = getPerfil();
+  $('edit-nombre').value = p.nombre;
+  $('edit-apellidos').value = p.apellidos;
+  $('edit-carrera').value = p.carrera;
+  $('edit-ciclo').value = p.ciclo;
+  $('edit-edad').value = p.edad;
+  $('modal-edit').classList.add('open');
+}
+
+function cerrarModalEditarPerfil(){
+  $('modal-edit').classList.remove('open');
+}
+
+$('edit-cerrar').onclick = cerrarModalEditarPerfil;
+$('edit-guardar').onclick = () => {
+  const p = getPerfil();
+  p.nombre = $('edit-nombre').value.trim() || p.nombre;
+  p.apellidos = $('edit-apellidos').value.trim() || p.apellidos;
+  p.carrera = $('edit-carrera').value.trim() || p.carrera;
+  p.ciclo = $('edit-ciclo').value.trim() || p.ciclo;
+  p.edad = $('edit-edad').value.trim() || p.edad;
+  
+  setPerfil(p);
+  cerrarModalEditarPerfil();
+};
+
+$('gh-cerrar').onclick = () => $('modal-gh').classList.remove('open');
+
+/* LOGIN FORM */
 $('loginForm').onsubmit=e=>{
   e.preventDefault();
   const u=$('username').value.trim();
@@ -752,57 +1061,17 @@ $('loginForm').onsubmit=e=>{
   }
 };
 
-$('btn-logout').onclick=()=>guardarSesion(false);
-$('btn-logout-header').onclick=()=>guardarSesion(false);
-
-$('btn-info').onclick=()=>$('modal-info').classList.add('open');
-$('btn-cerrar-info').onclick=()=>$('modal-info').classList.remove('open');
-
-$('btn-gh').onclick=()=>pedirConexion();
-$('gh-cerrar').onclick=()=>$('modal-gh').classList.remove('open');
-
-$('gh-guardar').onclick=async()=>{
-  const owner=$('gh-owner').value.trim();
-  const repo=$('gh-repo').value.trim();
-  const branch=$('gh-branch').value.trim()||'main';
-  const token=$('gh-token').value.trim();
-  const est=$('gh-estado');
-
-  if(!owner||!repo||!token){
-    est.className='gh-estado err';
-    est.textContent='Por favor llena todos los campos (Usuario, Repositorio y Token).';
-    return;
+document.addEventListener('click', e => {
+  if (e.target && e.target.id === 'btn-logout-header') {
+    guardarSesion(false);
   }
-
-  setCfg({owner,repo,branch,token});
-  est.className='gh-estado';
-  est.textContent='Probando conexión con GitHub...';
-
-  try{
-    await gh('GET','/repos/'+encodeURIComponent(owner)+'/'+encodeURIComponent(repo));
-    est.textContent='✔ ¡Conexión exitosa!';
-    setTimeout(()=>$('modal-gh').classList.remove('open'),1200);
-  }catch(err){
-    est.className='gh-estado err';
-    est.textContent='Error: '+msgGH(err);
+  if (e.target && e.target.id === 'btn-logout') {
+    guardarSesion(false);
   }
-};
-
-$('gh-borrar').onclick=()=>{
-  borrarCfg();
-  $('gh-owner').value='';$('gh-repo').value='';$('gh-token').value='';
-  const est=$('gh-estado');
-  est.className='gh-estado';
-  est.textContent='Datos eliminados de este navegador.';
-};
+});
 
 $('formSubirTarea').onsubmit=async e=>{
   e.preventDefault();
-  if(!cfgOK()){
-    pedirConexion('Para subir una tarea primero conecta tu cuenta de GitHub con un token.');
-    return;
-  }
-
   const {params}=leerHash();
   const curso=params.get('nombre')||CURSO_POR_DEFECTO;
   const semana=params.get('semana')||'1';
@@ -855,12 +1124,13 @@ $('formSubirTarea').onsubmit=async e=>{
     setTimeout(()=>navegar(),1500);
   }catch(err){
     est.className='subida-estado err';
-    est.textContent='Error al subir: '+(err.message||msgGH(err));
+    est.textContent='Error al subir: '+(err.message||'Error desconocido');
   }finally{
     btn.disabled=false;
   }
 };
 
+actualizarUIPerfil();
 navegar();
 })();
 </script>

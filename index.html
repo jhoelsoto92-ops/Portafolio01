@@ -574,7 +574,10 @@ const ENLACES={
     2:{url:DRIVE_SEMANA_02,tipo:'drive',etiqueta:'Código aplicaciones web de geometría'},
     3:{url:FIGMA_DESARROLLO_SEMANA_3_TRACK_3,tipo:'figma',etiqueta:'Diseño de dashboard universitario'},
     4:{url:FIGMA_DESARROLLO_SEMANA_4_TRACK_4,tipo:'figma',etiqueta:'Tienda virtual para tuners'},
-    5:{url:DRIVE_DESARROLLO_SEMANA_5_TRACK_5,tipo:'drive',etiqueta:'ZIP de la tienda'}
+    5:{url:DRIVE_DESARROLLO_SEMANA_5_TRACK_5,tipo:'drive',etiqueta:'ZIP de la tienda'},
+    6:{url:'https://drive.google.com/file/d/1t-9wAgX7vdz-pfhBwjOr960_AesfmUfm/view?usp=sharing',tipo:'drive',etiqueta:'Código de Tienda Tuners',comentario:'dentro de este archivo descargando y descomprimiento vera una carpeta tienda tuners y ejecutalo'},
+    7:{url:'https://drive.google.com/file/d/1zdOoJl-crECsXaIzmZWlFSqpbaNuu_bA/view?usp=sharing',tipo:'drive',etiqueta:'Informe de cómo se creó el login',comentario:'informe de como se creo el login'},
+    8:{url:'https://drive.google.com/file/d/1iTQ-9_j_dydS9D1q4Kk-YBDzBUvAqJnh/view?usp=sharing',tipo:'drive',etiqueta:'Informe final de mi tienda',comentario:'informe final de mi tienda'}
  },
  'Algoritmos y Estructuras de Datos':{
     1:{url:DRIVE_ALGORITMOS_SEMANA_01,tipo:'drive',etiqueta:'TAREA EN DRIVE'},
@@ -802,6 +805,9 @@ function renderUnidades(curso,modoTarea){
       html+='<div class="week-card" id="card-sem-'+semana+'"><div class="week-top"><a href="'+pMainHref+'"'+(isHttp?EXT:'')+' class="week-main"><div class="week-number">Track '+semana+'</div><div class="week-label">Semana '+semana+'</div><div class="week-desc">'+esc(etiquetaPrincipal)+'</div></a>';
       html+='<button class="btn-toggle" type="button" data-semana="'+semana+'" title="Desplegar entregas de esta semana"><span class="tri">▼</span></button></div>';
       html+='<div class="week-actions">'+principalVer+principalDl+'</div>';
+      if(curso==='Desarrollo de Aplicaciones' && semConfig && semConfig.comentario){
+        html+='<div class="week-desc" style="margin:8px 10px 10px;padding:10px 12px;border-left:3px solid var(--cyan);border-radius:6px;background:rgba(0,220,255,.07);">💬 <strong>Comentario:</strong> '+esc(semConfig.comentario)+'</div>';
+      }
 
       /* TRACKS EXTRA DE DESARROLLO DE APLICACIONES: enlaces originales del código 1 */
       if(curso==='Desarrollo de Aplicaciones' && EXTRAS_DESARROLLO[semana]){
